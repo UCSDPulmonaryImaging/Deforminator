@@ -1,5 +1,9 @@
 function [x_roi_def, y_roi_def] = roi_undef_to_roi_def_8(x_roi_undef, y_roi_undef, xi_Xundef, xi_Yundef, fv)
 
+%
+% 
+% Tatsuya Arai
+
 nordal_para_x = fv([1:4]);
 nordal_para_y = fv([5:8]);
 
