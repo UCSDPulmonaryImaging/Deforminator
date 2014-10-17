@@ -1291,15 +1291,15 @@ if isfield(handles,'marker4')
 end
 
 if isfield(handles,'outline_im')
-   if ishandle(handles.outline_im)
-   delete(handles.outline_im);
-   handles = rmfield(handles,'outline_im');
+   if ishandle(handles.marker4)
+   delete(handles.marker4);
+   handles = rmfield(handles,'marker4');
    guidata(hObject, handles);
    end
 end
 
 
-hold off;
+
 handles.im_fig = imagesc(handles.IM_defs(:,:,handles.im_number)); colormap hot; caxis([0, max(max(max(handles.IM_defs))).*0.3]);
 axis ij; axis([-10 , 266, -10 , 266]); handles.ah = axis; 
 set(gcf,'WindowButtonDownFcn',{@axes1_ButtonDownFcn handles})
