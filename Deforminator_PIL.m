@@ -36,84 +36,31 @@ function Deforminator_PIL(saveFilename)
 % Changed function name
 % 
 
-
 close all
 
 if nargin == 0 
-% -1 - Select UI File Name -> Saving
-'Select save file name'
-[saveFilename,path2save]=uiputfile('*.mat', 'Select save file name');
-% 0 - Load all Files
+    % -1 - Select UI File Name -> Saving
+    'Select save file name'
+    [saveFilename,path2save]=uiputfile('*.mat', 'Select save file name');
+    % 0 - Load all Files
+    home = cd;
+    % If no subject directory included, select it now
 
-% If no subject directory included, select it now
-
-    % Select folder where data is stored
-dire0=pwd;
-'Select folder containing data to be registered'
-dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
-
-dire2
-
+        % Select folder where data is stored
+    dire0=pwd;
+    'Select folder containing data to be registered'
+    dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
     
-%Load all dicom images in 
-[IM_unreg]=LoadAllDicomFiles(dire2);
+    %Load all dicom images in 
+    [IM_unreg]=LoadAllDicomFiles(dire2);
+    cd(home);
+    Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename);
 
-prompt={'Subject initials:','Notes:'};
-name='Input subject info';
-defaultanswer={'subject Initials','Notes'};
-answer=inputdlg(prompt,name,2,defaultanswer);
-c_initial=char(answer(1));
-c_note=char(answer(2));
-
-master=[c_initial ' ' c_note];
-%clear c_initial c_note
-notes=master;
-%  
-cd(dire2) 
-cd ..
-
-% Pick reference image 
-SelectReference(IM_unreg);
-'press any key when ready'
-pause
-load('SelectedRefIm')
-
-refIM=IM_unreg(:,:,out);
-eval(['! rm SelectedRefIm.mat'])
-
-% Plot reference image
-imshow(refIM,[0 0.3*(max(max(refIM)))])
-colormap('jet');
-
-% Draw ROI
-[referenceROI,x_roi,y_roi]=roipoly;
-close
-
-% Save all data
-cd(path2save)
-save(saveFilename)
-
-%keyboard
-% Projective deformation 
-Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,[],saveFilename);
-pause
 end
-
 
 if nargin ==1
     
     load(saveFilename)
-    Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,Ig8,saveFilename);
-    pause
+    Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,Ig8,saveFilename,breathhold,imageq);
+
 end
-
-
-prompt={'Subject initials:','Notes:'};
-answer=inputdlg(prompt,name,2,answer);
-c_initial=char(answer(1));
-c_note=char(answer(2));
-master=[c_initial ' ' c_note];
-clear c_initial c_note
-notes=master;
-cd(path2save)
-save(saveFilename,'notes','-append')
