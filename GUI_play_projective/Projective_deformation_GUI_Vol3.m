@@ -1,3 +1,24 @@
+%% Help Section
+% to be completed
+
+
+% Function calls
+% First load: Projective_deformation_GUI_Vol3(([],[],IM_unreg,[],saveFilename))
+% Reload Prev: Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,Ig8,saveFilename,breathhold,imageq);
+
+%Varargin list for .m-file debugging (empty means use [] as placeholder,
+%excluded inputs should not appear at all in the function call
+
+% 1: x_roi, optionally empty, x coordinates of ROI vertices
+% 2: y_roi, optionally empty, y coordinates of ROI vertices
+% 3: IM_defs, mandatory input, set of images to register
+% 4: Ig8, optionally empty, set of saved nodal parameters
+% 5: saveFilename, mandatory input, file name for saving GUI output
+% 6: breathhold, optionally excluded, series of saved bad breathhold info
+% 7: imageq, optionally excluded, series of saved bad image data
+% 8: patterns, optionally excluded, series of saved nodal patterns
+
+%% Initialization function DO NOT EDIT!!!!!
 function varargout = Projective_deformation_GUI_Vol3(varargin)
 %PROJECTIVE_DEFORMATION_GUI_VOL3 M-file for Projective_deformation_GUI_Vol3.fig
 %      PROJECTIVE_DEFORMATION_GUI_VOL3, by itself, creates a new PROJECTIVE_DEFORMATION_GUI_VOL3 or raises the existing
@@ -27,7 +48,7 @@ function varargout = Projective_deformation_GUI_Vol3(varargin)
 
 % Edit the above text to modify the response to help Projective_deformation_GUI_Vol3
 
-% Last Modified by GUIDE v2.5 21-Oct-2014 17:00:41
+% Last Modified by GUIDE v2.5 22-Oct-2014 13:14:13
 
 % Begin initialization code - DO NOT EDIT
 
@@ -48,31 +69,33 @@ else
     gui_mainfcn(gui_State, varargin{:});
 end
 end
-% End initialization code - DO NOT EDIT
 
+% End initialization code
 
+%% Object Creation Functions
 % --- Executes during object creation, after setting all properties.
+
 function display_nodes_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to display_nodes (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 end
 
-% --- Executes during object creation, after setting all properties.
+
 function display_center_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to display_center (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 end
 
-% --- Executes during object creation, after setting all properties.
+
 function display_Blurr_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to display_Blurr (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 end
 
-% --- Executes during object creation, after setting all properties.
+
 function display_disp_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to display_disp (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -80,7 +103,6 @@ function display_disp_CreateFcn(hObject, eventdata, handles)
 end
 
 
-% --- Executes during object creation, after setting all properties.
 function completionStatus_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to completionStatus (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -88,15 +110,269 @@ function completionStatus_CreateFcn(hObject, eventdata, handles)
 end
 
 
-
-% --- Executes during object creation, after setting all properties.
 function pushbutton1_set_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to pushbutton1_set (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 end
 
-%%
+
+function axes1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes1
+end
+
+
+function axes2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes2
+end
+
+
+function slider1_1x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider1_1x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function slider2_1y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider2_1y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function slider3_2x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider3_2x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function slider4_2y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider4_2y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function slider5_3x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider5_3x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function slider6_3y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider6_3y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function slider7_4x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider7_4x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function slider8_4y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider8_4y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function im_number_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to im_number_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function image_slider_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to image_slider (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+end
+
+
+function nodal_1_x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to nodal_1_x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function nodal_1_y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to nodal_1_y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function nodal_2_x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to nodal_2_x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function nodal_2_y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to nodal_2_y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function nodal_3_x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to nodal_3_x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function pattern_chooser_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to pattern_chooser (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function nodal_4_y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to nodal_4_y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function nodal_3_y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to nodal_3_y (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+
+function nodal_4_x_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to nodal_4_x (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+end
+
+%% Opening & Output Functions
 
 % --- Executes just before Projective_deformation_GUI_Vol3 is made visible.
 function Projective_deformation_GUI_Vol3_OpeningFcn(hObject, eventdata, handles, varargin)
@@ -106,6 +382,8 @@ function Projective_deformation_GUI_Vol3_OpeningFcn(hObject, eventdata, handles,
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   unrecognized PropertyName/PropertyValue pairs from the
 %            command line (see VARARGIN)
+axis(handles.axes2, [ 0 100, 0 1]);
+axis([handles.axes2 handles.axes1], 'off');
 
 % Choose default command line output for Projective_deformation_GUI_Vol3
 %%% Input
@@ -114,6 +392,11 @@ handles.IM_defs = varargin{3};
 handles.filename = varargin{5};
 handles.im_number = 1;
 handles.im_number_end = size(handles.IM_defs,3);
+handles.nodal_parameters = [];
+handles.save_nodal_parameters = [];
+handles.reference_im = 1;
+handles.initialized = 0;
+handles.resetting_reference = 0;
 
 sliderMin = 1;
 sliderMax = size(handles.IM_defs,3); % this is variable
@@ -123,168 +406,220 @@ set(handles.image_slider, 'Min', sliderMin);
 set(handles.image_slider, 'Max', sliderMax);
 set(handles.image_slider, 'SliderStep', sliderStep);
 set(handles.image_slider, 'Value', sliderMin); % set to beginning of sequence
+set(handles.im_number_edit, 'String', handles.im_number);
+
+%disable for now because it is not currently working
+set(handles.setDefault,'enable','off');
 
 
-if ~isempty(varargin{1}) && ~isempty(varargin{2})
-    handles.x_roi_undef = varargin{1};
-    handles.y_roi_undef = varargin{2};
-
-
-    if nargin > 8
-        handles.badbreathhold = varargin{6};
-        handles.badimage = varargin{7};
-    else
-        handles.badbreathhold = zeros(handles.im_number_end,1);
-        handles.badimage = zeros(handles.im_number_end,1);
-    end
-
-    initialize();
-
-else %this is what you do if an ROI doesn't exist yet    
-         
-    handles.x_roi_undef = [];
-    handles.y_roi_undef = [];
-    handles.nodal_parameters = [];
-    handles.badbreathhold = zeros(handles.im_number_end,1);
-    handles.badimage = zeros(handles.im_number_end,1);
-    set(handles.slider1_1x, 'enable', 'off'); % set to beginning of sequence
-    set(handles.slider2_1y, 'enable','off'); % set to beginning of sequence
-    set(handles.slider3_2x, 'enable', 'off'); % set to beginning of sequence
-    set(handles.slider4_2y, 'enable', 'off'); % set to beginning of sequence
-    set(handles.slider5_3x, 'enable', 'off'); % set to beginning of sequence
-    set(handles.slider6_3y, 'enable', 'off'); % set to beginning of sequence
-    set(handles.slider7_4x, 'enable', 'off'); % set to beginning of sequence
-    set(handles.slider8_4y, 'enable', 'off'); % set to beginning of sequence
-    set(handles.display_center, 'enable', 'off');
-    set(handles.display_nodes, 'enable', 'off');
-    set(handles.display_Blurr, 'enable', 'off');
-    set(handles.display_disp, 'enable', 'off'); 
-
-    %%%% Radio Button
-    set(handles.display_ROI,'Value',1);
-    set(handles.display_center,'Value',0);
-    set(handles.display_center,'Value',0);
-    set(handles.display_nodes,'Value',0);
-    set(handles.display_Blurr,'Value',0);
-    set(handles.display_disp,'Value',0); 
-    
-    handles.display_ROI_val = 1;
-    handles.display_center_val = 0;
-    handles.display_nodes_val = 0;
-    handles.display_Blurr_val = 0;
-    handles.display_disp_val = 0; 
-    handles.modifying_ROI = 0;
-    
-    guidata(hObject, handles);
-    show_figures_PDGUI(hObject, eventdata, handles);
-
+%if there are predefined nodes keep them, otherwise set to empty array
+%function initialize will check if the array is empty and pre-populate it
+if ~isempty(varargin{4})
+    handles.nodal_parameters = varargin{4};
 end
 
-    function initialize()
-    
-    %%%%% Nodes
-    min_x = min(handles.x_roi_undef); 
-    max_x = max(handles.x_roi_undef);
-    min_y = min(handles.y_roi_undef);
-    max_y = max(handles.y_roi_undef);
-    [X_undef, Y_undef] = meshgrid(1:size(handles.IM_defs,2),1:size(handles.IM_defs,1));
-    handles.xi_Xundef = (X_undef - min_x) / (max_x - min_x);
-    handles.xi_Yundef = (Y_undef - min_y) / (max_y - min_y);
-    % handles.nodal_parameters = [min_x, max_x, min_x, max_x, min_y, min_y, max_y, max_y];
 
-    if isempty(varargin{4}) ~= 1
-        handles.nodal_parameters = varargin{4};
-    else
+
+
+
+    if ~isempty(varargin{1}) && ~isempty(varargin{2})
+        handles.x_roi_undef = varargin{1};
+        handles.y_roi_undef = varargin{2};
+
+
+        if nargin > 8
+            handles.badbreathhold = varargin{6};
+            handles.badimage = varargin{7};
+            
+            if nargin > 10
+                handles.save_nodal_parameters = varargin{8};  
+            end
+            
+        else
+            handles.badbreathhold = zeros(handles.im_number_end,1);
+            handles.badimage = zeros(handles.im_number_end,1);
+        end
+
+        initialize(hObject, eventdata, handles);
+
+    else %this is what you do if an ROI doesn't exist yet    
+
+        handles.x_roi_undef = [];
+        handles.y_roi_undef = [];
+        handles.nodal_parameters = [];
+        handles.badbreathhold = zeros(handles.im_number_end,1);
+        handles.badimage = zeros(handles.im_number_end,1);
+        set(handles.slider1_1x, 'enable', 'off'); 
+        set(handles.slider2_1y, 'enable','off');
+        set(handles.slider3_2x, 'enable', 'off'); 
+        set(handles.slider4_2y, 'enable', 'off'); 
+        set(handles.slider5_3x, 'enable', 'off'); 
+        set(handles.slider6_3y, 'enable', 'off'); 
+        set(handles.slider7_4x, 'enable', 'off'); 
+        set(handles.slider8_4y, 'enable', 'off'); 
+        set(handles.display_center, 'enable', 'off');
+        set(handles.display_nodes, 'enable', 'off');
+        set(handles.display_Blurr, 'enable', 'off');
+        set(handles.display_disp, 'enable', 'off');
+        set(handles.pushbutton1_set, 'enable', 'off');
+
+        %%%% Radio Button
+        set(handles.display_ROI,'Value',0);
+        set(handles.display_center,'Value',0);
+        set(handles.display_center,'Value',0);
+        set(handles.display_nodes,'Value',0);
+        set(handles.display_Blurr,'Value',0);
+        set(handles.display_disp,'Value',0); 
+
+        handles.display_ROI_val = 0;
+        handles.display_center_val = 0;
+        handles.display_nodes_val = 0;
+        handles.display_Blurr_val = 0;
+        handles.display_disp_val = 0; 
+        handles.modifying_ROI = 0;
+
+        guidata(hObject, handles);
+        show_figures_PDGUI(hObject, eventdata, handles);
+
+    end   
+end
+
+% --- Outputs from this function are returned to the command line. 
+% Currently nothing is output
+function varargout = Projective_deformation_GUI_Vol3_OutputFcn(hObject, eventdata, handles)
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+end
+
+% Initialization after ROI selection helper function 
+function initialize(hObject, eventdata, handles)
+
+    
+    if handles.resetting_reference == 1 %special behavior if initialize is called on a change in reference image
+        handles.resetting_reference = 0;
+        
+    else %regular behavior
+        %%%%% Nodes
+        min_x = min(handles.x_roi_undef); 
+        max_x = max(handles.x_roi_undef);
+        min_y = min(handles.y_roi_undef);
+        max_y = max(handles.y_roi_undef);
+        [X_undef, Y_undef] = meshgrid(1:size(handles.IM_defs,2),1:size(handles.IM_defs,1));
+        handles.xi_Xundef = (X_undef - min_x) / (max_x - min_x);
+        handles.xi_Yundef = (Y_undef - min_y) / (max_y - min_y);
+    end
+ 
+        
+        
+    if isempty(handles.nodal_parameters) 
         handles.nodal_parameters = [min_x * ones(handles.im_number_end,1), max_x * ones(handles.im_number_end,1),...
             min_x * ones(handles.im_number_end,1), max_x * ones(handles.im_number_end,1),...
             min_y * ones(handles.im_number_end,1), min_y * ones(handles.im_number_end,1),...
             max_y * ones(handles.im_number_end,1), max_y * ones(handles.im_number_end,1)];
+        
+        handles.reference_pattern = handles.nodal_parameters(handles.im_number,:);
     end
+        
+    
+    if isempty(handles.save_nodal_parameters)
+        handles.save_nodal_parameters = handles.nodal_parameters(1:15,:);
+    end
+    
     handles.initial_nodal_parameters = handles.nodal_parameters;
-    handles.save_nodal_parameters = handles.nodal_parameters([1:15],:);
     handles.save_nodal_parameters_click = 0;
     handles.save_nodal_parameters_click_2 = 0;
-    %handles.save_nodal_parameters = handles.nodal_parameters([1:15],:);
 
-    %%% Node 1 x slider
-    sliderMin_1x = -10;
-    sliderMax_1x = size(handles.IM_defs,2) + 50; % this is variable
-    sliderStep_1x = [1, 1] / (sliderMax_1x - sliderMin_1x); % major and minor steps of 1
+    if ~handles.initialized %run this if executing for the first time, else use set_nodal_all callback
+        
+        handles.node_pattern = 1;
+        
+        %%% Node 1 x slider
+        sliderMin_1x = -10;
+        sliderMax_1x = size(handles.IM_defs,2) + 50; % this is variable
+        sliderStep_1x = [1, 1] / (sliderMax_1x - sliderMin_1x); % major and minor steps of 1
 
-    set(handles.slider1_1x, 'Min', sliderMin_1x);
-    set(handles.slider1_1x, 'Max', sliderMax_1x);
-    set(handles.slider1_1x, 'SliderStep', sliderStep_1x);
-    set(handles.slider1_1x, 'Value', min_x); % set to beginning of sequence
+        set(handles.slider1_1x, 'Min', sliderMin_1x);
+        set(handles.slider1_1x, 'Max', sliderMax_1x);
+        set(handles.slider1_1x, 'SliderStep', sliderStep_1x);
 
-    %%% Node 1 y slider
-    sliderMin_1y = -10;
-    sliderMax_1y = size(handles.IM_defs,1) + 50; % this is variable
-    sliderStep_1y = [1, 1] / (sliderMax_1y - sliderMin_1y); % major and minor steps of 1
 
-    set(handles.slider2_1y, 'Min', sliderMin_1y);
-    set(handles.slider2_1y, 'Max', sliderMax_1y);
-    set(handles.slider2_1y, 'SliderStep', sliderStep_1y);
-    set(handles.slider2_1y, 'Value', min_y); % set to beginning of sequence
+        %%% Node 1 y slider
+        sliderMin_1y = -10;
+        sliderMax_1y = size(handles.IM_defs,1) + 50; % this is variable
+        sliderStep_1y = [1, 1] / (sliderMax_1y - sliderMin_1y); % major and minor steps of 1
 
-    %%% Node 2 x slider
-    sliderMin_2x = -10;
-    sliderMax_2x = size(handles.IM_defs,2) + 50; % this is variable
-    sliderStep_2x = [1, 1] / (sliderMax_2x - sliderMin_2x); % major and minor steps of 1
+        set(handles.slider2_1y, 'Min', sliderMin_1y);
+        set(handles.slider2_1y, 'Max', sliderMax_1y);
+        set(handles.slider2_1y, 'SliderStep', sliderStep_1y);
+        set(handles.slider2_1y, 'Value', min_y); % set to beginning of sequence
 
-    set(handles.slider3_2x, 'Min', sliderMin_2x);
-    set(handles.slider3_2x, 'Max', sliderMax_2x);
-    set(handles.slider3_2x, 'SliderStep', sliderStep_2x);
-    set(handles.slider3_2x, 'Value', max_x); % set to beginning of sequence
+        %%% Node 2 x slider
+        sliderMin_2x = -10;
+        sliderMax_2x = size(handles.IM_defs,2) + 50; % this is variable
+        sliderStep_2x = [1, 1] / (sliderMax_2x - sliderMin_2x); % major and minor steps of 1
 
-    %%% Node 2 y slider
-    sliderMin_2y = -10;
-    sliderMax_2y = size(handles.IM_defs,1) + 50; % this is variable
-    sliderStep_2y = [1, 1] / (sliderMax_2y - sliderMin_2y); % major and minor steps of 1
+        set(handles.slider3_2x, 'Min', sliderMin_2x);
+        set(handles.slider3_2x, 'Max', sliderMax_2x);
+        set(handles.slider3_2x, 'SliderStep', sliderStep_2x);
+        set(handles.slider3_2x, 'Value', max_x); % set to beginning of sequence
 
-    set(handles.slider4_2y, 'Min', sliderMin_2y);
-    set(handles.slider4_2y, 'Max', sliderMax_2y);
-    set(handles.slider4_2y, 'SliderStep', sliderStep_2y);
-    set(handles.slider4_2y, 'Value', min_y); % set to beginning of sequence
+        %%% Node 2 y slider
+        sliderMin_2y = -10;
+        sliderMax_2y = size(handles.IM_defs,1) + 50; % this is variable
+        sliderStep_2y = [1, 1] / (sliderMax_2y - sliderMin_2y); % major and minor steps of 1
 
-    %%% Node 3 x slider
-    sliderMin_3x = -10;
-    sliderMax_3x = size(handles.IM_defs,2) + 50; % this is variable
-    sliderStep_3x = [1, 1] / (sliderMax_3x - sliderMin_3x); % major and minor steps of 1
+        set(handles.slider4_2y, 'Min', sliderMin_2y);
+        set(handles.slider4_2y, 'Max', sliderMax_2y);
+        set(handles.slider4_2y, 'SliderStep', sliderStep_2y);
+        set(handles.slider4_2y, 'Value', min_y); % set to beginning of sequence
 
-    set(handles.slider5_3x, 'Min', sliderMin_3x);
-    set(handles.slider5_3x, 'Max', sliderMax_3x);
-    set(handles.slider5_3x, 'SliderStep', sliderStep_3x);
-    set(handles.slider5_3x, 'Value', min_x); % set to beginning of sequence
+        %%% Node 3 x slider
+        sliderMin_3x = -10;
+        sliderMax_3x = size(handles.IM_defs,2) + 50; % this is variable
+        sliderStep_3x = [1, 1] / (sliderMax_3x - sliderMin_3x); % major and minor steps of 1
 
-    %%% Node 3 y slider
-    sliderMin_3y = -10;
-    sliderMax_3y = size(handles.IM_defs,1) + 50; % this is variable
-    sliderStep_3y = [1, 1] / (sliderMax_3y - sliderMin_3y); % major and minor steps of 1
+        set(handles.slider5_3x, 'Min', sliderMin_3x);
+        set(handles.slider5_3x, 'Max', sliderMax_3x);
+        set(handles.slider5_3x, 'SliderStep', sliderStep_3x);
+        set(handles.slider5_3x, 'Value', min_x); % set to beginning of sequence
 
-    set(handles.slider6_3y, 'Min', sliderMin_3y);
-    set(handles.slider6_3y, 'Max', sliderMax_3y);
-    set(handles.slider6_3y, 'SliderStep', sliderStep_3y);
-    set(handles.slider6_3y, 'Value', max_y); % set to beginning of sequence
+        %%% Node 3 y slider
+        sliderMin_3y = -10;
+        sliderMax_3y = size(handles.IM_defs,1) + 50; % this is variable
+        sliderStep_3y = [1, 1] / (sliderMax_3y - sliderMin_3y); % major and minor steps of 1
 
-    %%% Node 4 x slider
-    sliderMin_4x = -10;
-    sliderMax_4x = size(handles.IM_defs,2) + 50; % this is variable
-    sliderStep_4x = [1, 1] / (sliderMax_4x - sliderMin_4x); % major and minor steps of 1
+        set(handles.slider6_3y, 'Min', sliderMin_3y);
+        set(handles.slider6_3y, 'Max', sliderMax_3y);
+        set(handles.slider6_3y, 'SliderStep', sliderStep_3y);
+        set(handles.slider6_3y, 'Value', max_y); % set to beginning of sequence
 
-    set(handles.slider7_4x, 'Min', sliderMin_4x);
-    set(handles.slider7_4x, 'Max', sliderMax_4x);
-    set(handles.slider7_4x, 'SliderStep', sliderStep_4x);
-    set(handles.slider7_4x, 'Value', max_x); % set to beginning of sequence
+        %%% Node 4 x slider
+        sliderMin_4x = -10;
+        sliderMax_4x = size(handles.IM_defs,2) + 50; % this is variable
+        sliderStep_4x = [1, 1] / (sliderMax_4x - sliderMin_4x); % major and minor steps of 1
 
-    %%% Node 3 y slider
-    sliderMin_4y = -10;
-    sliderMax_4y = size(handles.IM_defs,1) + 50; % this is variable
-    sliderStep_4y = [1, 1] / (sliderMax_4y - sliderMin_4y); % major and minor steps of 1
+        set(handles.slider7_4x, 'Min', sliderMin_4x);
+        set(handles.slider7_4x, 'Max', sliderMax_4x);
+        set(handles.slider7_4x, 'SliderStep', sliderStep_4x);
+        set(handles.slider7_4x, 'Value', max_x); % set to beginning of sequence
 
-    set(handles.slider8_4y, 'Min', sliderMin_4y);
-    set(handles.slider8_4y, 'Max', sliderMax_4y);
-    set(handles.slider8_4y, 'SliderStep', sliderStep_4y);
-    set(handles.slider8_4y, 'Value', max_y); % set to beginning of sequence
+        %%% Node 3 y slider
+        sliderMin_4y = -10;
+        sliderMax_4y = size(handles.IM_defs,1) + 50; % this is variable
+        sliderStep_4y = [1, 1] / (sliderMax_4y - sliderMin_4y); % major and minor steps of 1
+
+        set(handles.slider8_4y, 'Min', sliderMin_4y);
+        set(handles.slider8_4y, 'Max', sliderMax_4y);
+        set(handles.slider8_4y, 'SliderStep', sliderStep_4y);
+        set(handles.slider8_4y, 'Value', max_y); % set to beginning of sequence
+    else
+        set_nodal_all_xy(hObject, eventdata, handles)
+    end
 
     %%%% Radio Button
     set(handles.display_center,'Value',1);
@@ -305,49 +640,106 @@ end
     handles.modifying_ROI = 0;
 
     %%%
-
-    handles.node_pattern = 1;
-    set(handles.edit12,'String',handles.node_pattern);
+    
+    handles.initialized = 1;
+    set(handles.pattern_chooser,'String',handles.node_pattern);
     set(handles.im_number_edit,'String',handles.im_number);
 
     % Update handles structure
     guidata(hObject, handles);
     show_figures_PDGUI(hObject, eventdata, handles);
-    set_nodal_a_xy(hObject, eventdata, handles);
-    end
-   
+    set_nodal_all_xy(hObject, eventdata, handles);
 end
 
-% --- Outputs from this function are returned to the command line.
-function varargout = Projective_deformation_GUI_Vol3_OutputFcn(hObject, eventdata, handles)
-% varargout  cell array for returning output args (see VARARGOUT);
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
+%% Callbacks - GUI keypress (keyboard shortcuts)
+
+% --- Executes on key press with focus on GuiMainWindow or any of its controls.
+function GuiMainWindow_WindowKeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to GuiMainWindow (see GCBO)
+% eventdata  structure with the following fields (see FIGURE)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
 % handles    structure with handles and user data (see GUIDATA)
 
-% Get default command line output from handles structure
-varargout{1} = handles.output;
+switch eventdata.Key
+    case 'rightarrow'
+        if handles.im_number < handles.im_number_end
+            handles.im_number = handles.im_number+1;
+            resetImg();
+            pause(.03);
+        end
+        
+    case 'leftarrow'
+        if handles.im_number > 1
+            handles.im_number = handles.im_number-1;
+             resetImg();
+             pause(.03);
+        end
+        
+    case '1'
+        handles.node_pattern = 1;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case '2'
+        handles.node_pattern = 2;
+        loadSelectedPattern(hObject,eventdata,handles);
+    
+    case '3'
+        handles.node_pattern = 3;
+        loadSelectedPattern(hObject,eventdata,handles);
+    
+    case '4'
+        handles.node_pattern = 4;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case '5'
+        handles.node_pattern = 5;
+        loadSelectedPattern(hObject,eventdata,handles);
+    
+    case '6'
+        handles.node_pattern = 6;
+        loadSelectedPattern(hObject,eventdata,handles);
+    
+    case '7'
+        handles.node_pattern = 7;
+        loadSelectedPattern(hObject,eventdata,handles);
+    
+    case '8'
+        handles.node_pattern = 8;
+        loadSelectedPattern(hObject,eventdata,handles);
+    
+    case '9'
+        handles.node_pattern = 9;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case '0'
+        handles.node_pattern = 10;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case 'k'
+        pushbutton40_Callback(hObject, eventdata, handles);
+    
+        
+        
 end
 
-% --- Executes during object creation, after setting all properties.
-function axes2_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to axes2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
+    function resetImg()
+        set(handles.im_number_edit,'String',handles.im_number);
+        guidata(hObject, handles);
+        
+        if handles.initialized
+        set_nodal_all_xy(hObject, eventdata, handles);
+        end
+        
+        set(handles.image_slider, 'Value', handles.im_number);
+        show_figures_PDGUI(hObject, eventdata, handles);
+    end
 
-% Hint: place code in OpeningFcn to populate axes2
+
 end
 
-
-% --- Executes during object creation, after setting all properties.
-function axes1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to axes1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: place code in OpeningFcn to populate axes1
-end
-
+%% Callbacks - Slider Movement
 
 % --- Executes on slider movement.
 function slider1_1x_Callback(hObject, eventdata, handles)
@@ -365,19 +757,6 @@ set(handles.nodal_1_x,'String',handles.nodal_parameters(handles.im_number,1));
 set(handles.completionStatus,'String','Unsaved Changes');
 end
 
-% --- Executes during object creation, after setting all properties.
-function slider1_1x_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider1_1x (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
-
-% --- Executes on slider movement.
 function slider2_1y_Callback(hObject, eventdata, handles)
 % hObject    handle to slider2_1y (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -393,19 +772,6 @@ set(handles.nodal_1_y,'String',handles.nodal_parameters(handles.im_number,5)); %
 set(handles.completionStatus,'String','Unsaved Changes');
 end
 
-% --- Executes during object creation, after setting all properties.
-function slider2_1y_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider2_1y (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
-
-% --- Executes on slider movement.
 function slider3_2x_Callback(hObject, eventdata, handles)
 % hObject    handle to slider3_2x (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -421,19 +787,6 @@ set(handles.nodal_2_x,'String',handles.nodal_parameters(handles.im_number,2)); %
 set(handles.completionStatus,'String','Unsaved Changes');
 end
 
-% --- Executes during object creation, after setting all properties.
-function slider3_2x_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider3_2x (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
-
-% --- Executes on slider movement.
 function slider4_2y_Callback(hObject, eventdata, handles)
 % hObject    handle to slider4_2y (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -451,19 +804,6 @@ set(handles.completionStatus,'String','Unsaved Changes');
 
 end
 
-% --- Executes during object creation, after setting all properties.
-function slider4_2y_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider4_2y (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
-
-% --- Executes on slider movement.
 function slider5_3x_Callback(hObject, eventdata, handles)
 % hObject    handle to slider5_3x (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -481,19 +821,6 @@ set(handles.nodal_3_x,'String',handles.nodal_parameters(handles.im_number,3)); %
 guidata(hObject, handles);
 end
 
-% --- Executes during object creation, after setting all properties.
-function slider5_3x_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider5_3x (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
-
-% --- Executes on slider movement.
 function slider6_3y_Callback(hObject, eventdata, handles)
 % hObject    handle to slider6_3y (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -511,19 +838,6 @@ set(handles.nodal_3_y,'String',handles.nodal_parameters(handles.im_number,7)); %
 guidata(hObject, handles);
 end
 
-% --- Executes during object creation, after setting all properties.
-function slider6_3y_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider6_3y (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
-
-% --- Executes on slider movement.
 function slider7_4x_Callback(hObject, eventdata, handles)
 % hObject    handle to slider7_4x (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -542,19 +856,6 @@ guidata(hObject, handles);
 set(handles.completionStatus,'String','Unsaved Changes');
 end
 
-% --- Executes during object creation, after setting all properties.
-function slider7_4x_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider7_4x (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
-
-% --- Executes on slider movement.
 function slider8_4y_Callback(hObject, eventdata, handles)
 % hObject    handle to slider8_4y (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -573,18 +874,7 @@ guidata(hObject, handles);
 set(handles.completionStatus,'String','Unsaved Changes');
 end
 
-% --- Executes during object creation, after setting all properties.
-function slider8_4y_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slider8_4y (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
-
+%% Callbacks - Radio Buttons
 
 % --- Executes on button press in display_center.
 function display_center_Callback(hObject, eventdata, handles)
@@ -600,7 +890,7 @@ handles.display_center_val=get(hObject,'Value');
 
 %%%%% Set
 guidata(hObject,handles);  
-set_nodal_a_xy(hObject, eventdata, handles)
+set_nodal_all_xy(hObject, eventdata, handles)
 show_figures_PDGUI(hObject, eventdata, handles);
 end
 
@@ -616,7 +906,7 @@ handles.display_nodes_val=get(hObject,'Value');
 
 %%%%% Set
 guidata(hObject,handles);  
-set_nodal_a_xy(hObject, eventdata, handles)
+set_nodal_all_xy(hObject, eventdata, handles)
 show_figures_PDGUI(hObject, eventdata, handles);
 end
 
@@ -632,7 +922,7 @@ handles.display_Blurr_val=get(hObject,'Value');
 
 %%%%% Set
 guidata(hObject,handles);
-set_nodal_a_xy(hObject, eventdata, handles)
+set_nodal_all_xy(hObject, eventdata, handles)
 show_figures_PDGUI(hObject, eventdata, handles);
 end
 
@@ -649,78 +939,149 @@ handles.display_disp_val=get(hObject,'Value');
 
 %%%%% Set
 guidata(hObject,handles);
-set_nodal_a_xy(hObject, eventdata, handles);
+set_nodal_all_xy(hObject, eventdata, handles);
 show_figures_PDGUI(hObject, eventdata, handles)
 end
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% IM Slider & EDIT
-
-function im_number_edit_Callback(hObject, eventdata, handles)
-% hObject    handle to im_number_edit (see GCBO)
+% --- Executes on button press in display_ROI.
+function display_ROI_Callback(hObject, eventdata, handles)
+% hObject    handle to display_ROI (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of im_number_edit as text
-%        str2double(get(hObject,'String')) returns contents of im_number_edit as a double
-handles.im_number = str2double(get(hObject,'String'));
-set(handles.image_slider, 'Value', handles.im_number);
+% Hint: get(hObject,'Value') returns toggle state of display_ROI
+
+handles.display_ROI_val = get(hObject,'Value');
+
+if handles.display_ROI_val == 1
+    set(handles.slider1_1x, 'enable', 'off');
+    set(handles.slider2_1y, 'enable','off'); 
+    set(handles.slider3_2x, 'enable', 'off'); 
+    set(handles.slider4_2y, 'enable', 'off');
+    set(handles.slider5_3x, 'enable', 'off'); 
+    set(handles.slider6_3y, 'enable', 'off'); 
+    set(handles.slider7_4x, 'enable', 'off'); 
+    set(handles.slider8_4y, 'enable', 'off');
+    set(handles.display_center, 'enable', 'off');
+    set(handles.display_nodes, 'enable', 'off');
+    set(handles.display_Blurr, 'enable', 'off');
+    set(handles.display_disp, 'enable', 'off');
+    set(handles.accept_ROI, 'enable', 'on');
+    set(handles.display_ROI, 'enable', 'off');
+    set(handles.pushbutton1_set,'enable','off');
+     
+    
+    %%%% Radio Button
+    set(handles.display_center,'Value',0);
+    set(handles.display_nodes,'Value',0);
+    set(handles.display_Blurr,'Value',0);
+    set(handles.display_disp,'Value',0); 
+    
+    handles.display_center_val = 0;
+    handles.display_nodes_val = 0;
+    handles.display_Blurr_val = 0;
+    handles.display_disp_val = 0;
+end
+
+    
 guidata(hObject, handles);
-%%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles)
-%%%%% Set
-set_nodal_a_xy(hObject, eventdata, handles)
-end
-
-
-
-% --- Executes during object creation, after setting all properties.
-function im_number_edit_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to im_number_edit (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-end
-
-
-% --- Executes on slider movement.
-function image_slider_Callback(hObject, eventdata, handles)
-% hObject    handle to image_slider (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'Value') returns position of slider
-%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
-handles.im_number = round(get(handles.image_slider,'Value'));
-set(handles.im_number_edit,'String',handles.im_number);
-
-%%%%% Figure
-
-%%%%% Set
-guidata(hObject, handles);
-set_nodal_a_xy(hObject, eventdata, handles);
 show_figures_PDGUI(hObject, eventdata, handles);
-
 end
 
-% --- Executes during object creation, after setting all properties.
-function image_slider_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to image_slider (see GCBO)
+%% Callbacks - Accept ROI, Bad Breath, and Bad Image
+
+
+% --- Executes on button press in badbreath.
+function badbreath_Callback(hObject, eventdata, handles)
+% hObject    handle to badbreath (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
+% handles    structure with handles and user data (see GUIDATA)
 
-% Hint: slider controls usually have a light gray background.
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
+if handles.badbreathhold(handles.im_number) == 0
+    handles.badbreathhold(handles.im_number) = 1;
+else
+    handles.badbreathhold(handles.im_number) = 0;
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% IM Slider & Edlit
+%%%%% Set
+if ~isempty(handles.nodal_parameters)
+set_nodal_all_xy(hObject, eventdata, handles)
+end
+%%%%% Figure
+show_figures_PDGUI(hObject, eventdata, handles)
+guidata(hObject, handles);
+end
+
+% --- Executes on button press in badimage.
+function badimage_Callback(hObject, eventdata, handles)
+% hObject    handle to badimage (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+if handles.badimage(handles.im_number) == 0
+    handles.badimage(handles.im_number) = 1;
+else
+    handles.badimage(handles.im_number) = 0;
+end
+
+%%%%% Set
+if ~isempty(handles.nodal_parameters)
+set_nodal_all_xy(hObject, eventdata, handles)
+end
+%%%%% Figure
+show_figures_PDGUI(hObject, eventdata, handles)
+guidata(hObject, handles);
+end
+
+% --- Executes on button press in accept_ROI.
+function accept_ROI_Callback(hObject, eventdata, handles)
+% hObject    handle to accept_ROI (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    set(hObject,'enable','off');
+
+    handles.modifying_ROI = 0;
+    newROIPos = getPosition(handles.ROI);
+    
+    delete(handles.ROI);
+    handles.x_roi_undef = newROIPos(:,1);
+    handles.y_roi_undef = newROIPos(:,2);
+    handles.x_roi_undef(end+1) = handles.x_roi_undef(1);
+    handles.y_roi_undef(end+1) = handles.y_roi_undef(1);
+    
+    if ~isempty(handles.nodal_parameters)
+        min_x = min(handles.x_roi_undef); 
+        max_x = max(handles.x_roi_undef);
+        min_y = min(handles.y_roi_undef);
+        max_y = max(handles.y_roi_undef);
+
+        handles.nodal_parameters(handles.im_number,:) = [min_x, max_x, min_x, max_x, min_y, min_y, max_y, max_y];
+        handles.reference_pattern = handles.nodal_parameters(handles.im_number,:);
+    end
+    
+    %set up parameters for new roi
+    initialize(hObject, eventdata, handles);
+    
+    %turn controls back on  
+    set(handles.slider1_1x, 'enable', 'on');
+    set(handles.slider2_1y, 'enable','on'); 
+    set(handles.slider3_2x, 'enable', 'on'); 
+    set(handles.slider4_2y, 'enable', 'on');
+    set(handles.slider5_3x, 'enable', 'on'); 
+    set(handles.slider6_3y, 'enable', 'on'); 
+    set(handles.slider7_4x, 'enable', 'on'); 
+    set(handles.slider8_4y, 'enable', 'on');
+    set(handles.display_center, 'enable', 'on');
+    set(handles.display_nodes, 'enable', 'on');
+    set(handles.display_Blurr, 'enable', 'on');
+    set(handles.display_disp, 'enable', 'on');
+    set(handles.display_ROI,'enable','on');
+    set(handles.pushbutton1_set, 'enable', 'on');
+    set(handles.completionStatus,'String','Unsaved Changes');
+
+end
+
+%% Callbacks - Node Position edit
 
 function nodal_1_x_Callback(hObject, eventdata, handles)
 % hObject    handle to nodal_1_x (see GCBO)
@@ -739,21 +1100,6 @@ show_figures_PDGUI(hObject, eventdata, handles);
 set(handles.completionStatus,'String','Unsaved Changes');
 end
 
-
-% --- Executes during object creation, after setting all properties.
-function nodal_1_x_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to nodal_1_x (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-end
-
-
 function nodal_1_y_Callback(hObject, eventdata, handles)
 % hObject    handle to nodal_1_y (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -769,19 +1115,6 @@ set(handles.slider2_1y, 'Value', handles.nodal_parameters(handles.im_number,5));
 guidata(hObject, handles);
 show_figures_PDGUI(hObject, eventdata, handles);
 set(handles.completionStatus,'String','Unsaved Changes');
-end
-
-% --- Executes during object creation, after setting all properties.
-function nodal_1_y_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to nodal_1_y (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
 end
 
 function nodal_2_x_Callback(hObject, eventdata, handles)
@@ -802,19 +1135,6 @@ set(handles.completionStatus,'String','Unsaved Changes');
 
 end
 
-% --- Executes during object creation, after setting all properties.
-function nodal_2_x_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to nodal_2_x (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-end
-
 function nodal_2_y_Callback(hObject, eventdata, handles)
 % hObject    handle to nodal_2_y (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -831,19 +1151,6 @@ set(handles.completionStatus,'String','Unsaved Changes');
 
 end
 
-% --- Executes during object creation, after setting all properties.
-function nodal_2_y_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to nodal_2_y (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-end
-
 function nodal_3_x_Callback(hObject, eventdata, handles)
 % hObject    handle to nodal_3_x (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -856,19 +1163,6 @@ set(handles.slider5_3x, 'Value', handles.nodal_parameters(handles.im_number,3));
 guidata(hObject, handles);
 show_figures_PDGUI(hObject, eventdata, handles);
 set(handles.completionStatus,'String','Unsaved Changes');
-end
-
-% --- Executes during object creation, after setting all properties.
-function nodal_3_x_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to nodal_3_x (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
 end
 
 function nodal_3_y_Callback(hObject, eventdata, handles)
@@ -887,19 +1181,6 @@ show_figures_PDGUI(hObject, eventdata, handles);
 set(handles.completionStatus,'String','Unsaved Changes');
 end
 
-% --- Executes during object creation, after setting all properties.
-function nodal_3_y_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to nodal_3_y (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-end
-
 function nodal_4_x_Callback(hObject, eventdata, handles)
 % hObject    handle to nodal_4_x (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -912,19 +1193,6 @@ set(handles.slider7_4x, 'Value', handles.nodal_parameters(handles.im_number,4));
 guidata(hObject, handles);
 show_figures_PDGUI(hObject, eventdata, handles);
 set(handles.completionStatus,'String','Unsaved Changes');
-end
-
-% --- Executes during object creation, after setting all properties.
-function nodal_4_x_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to nodal_4_x (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
 end
 
 function nodal_4_y_Callback(hObject, eventdata, handles)
@@ -941,18 +1209,235 @@ show_figures_PDGUI(hObject, eventdata, handles);
 set(handles.completionStatus,'String','Unsaved Changes');
 end
 
-% --- Executes during object creation, after setting all properties.
-function nodal_4_y_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to nodal_4_y (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
+%%% ---- Set Nodal_a_xy
+function set_nodal_all_xy(hObject, eventdata, handles)
+%update text boxes
+set(handles.nodal_1_x,'String',handles.nodal_parameters(handles.im_number,1));
+set(handles.nodal_1_y,'String',handles.nodal_parameters(handles.im_number,5));
+set(handles.nodal_2_x,'String',handles.nodal_parameters(handles.im_number,2));
+set(handles.nodal_2_y,'String',handles.nodal_parameters(handles.im_number,6));
+set(handles.nodal_3_x,'String',handles.nodal_parameters(handles.im_number,3));
+set(handles.nodal_3_y,'String',handles.nodal_parameters(handles.im_number,7));
+set(handles.nodal_4_x,'String',handles.nodal_parameters(handles.im_number,4));
+set(handles.nodal_4_y,'String',handles.nodal_parameters(handles.im_number,8));
 
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
+%update sliders
+set(handles.slider1_1x, 'Value', handles.nodal_parameters(handles.im_number,1));
+set(handles.slider2_1y, 'Value', handles.nodal_parameters(handles.im_number,5)); 
+set(handles.slider3_2x, 'Value', handles.nodal_parameters(handles.im_number,2)); 
+set(handles.slider4_2y, 'Value', handles.nodal_parameters(handles.im_number,6)); 
+set(handles.slider5_3x, 'Value', handles.nodal_parameters(handles.im_number,3)); 
+set(handles.slider6_3y, 'Value', handles.nodal_parameters(handles.im_number,7)); 
+set(handles.slider7_4x, 'Value', handles.nodal_parameters(handles.im_number,4)); 
+set(handles.slider8_4y, 'Value', handles.nodal_parameters(handles.im_number,8));
+
+
+guidata(hObject, handles);
+end
+
+%% Callbacks - Image select slider and edit
+
+function im_number_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to im_number_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of im_number_edit as text
+%        str2double(get(hObject,'String')) returns contents of im_number_edit as a double
+handles.im_number = str2double(get(hObject,'String'));
+
+if handles.im_number < 1
+   handles.im_number = 1;
+   set(hObject,'String',num2str(handles.im_number,1));
+   
+elseif handles.im_number > handles.im_number_end
+   handles.im_number = handles.im_number_end;
+   set(hObject,'String',num2str(handles.im_number,3));
+end
+
+set(handles.image_slider, 'Value', handles.im_number);
+guidata(hObject, handles);
+%%%%% Figure
+show_figures_PDGUI(hObject, eventdata, handles)
+%%%%% Set
+if handles.initialized
+    set_nodal_all_xy(hObject, eventdata, handles)
 end
 end
+
+% --- Executes on slider movement.
+function image_slider_Callback(hObject, eventdata, handles)
+% hObject    handle to image_slider (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+handles.im_number = round(get(handles.image_slider,'Value'));
+set(handles.im_number_edit,'String',handles.im_number);
+
+%%%%% Figure
+
+%%%%% Set
+guidata(hObject, handles);
+if handles.initialized
+    set_nodal_all_xy(hObject, eventdata, handles)
+end
+show_figures_PDGUI(hObject, eventdata, handles);
+
+end
+
+%% Callbacks - Node Pattern Store & Select
+
+% --- Executes on button press in pushbutton2_set.
+function pushbutton2_set_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton2_set (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+handles.nodal_parameters(handles.im_number,1) = handles.initial_nodal_parameters(handles.im_number,1); %%%
+handles.nodal_parameters(handles.im_number,2) = handles.initial_nodal_parameters(handles.im_number,2); %%%
+handles.nodal_parameters(handles.im_number,3) = handles.initial_nodal_parameters(handles.im_number,3); %%%
+handles.nodal_parameters(handles.im_number,4) = handles.initial_nodal_parameters(handles.im_number,4); %%%
+handles.nodal_parameters(handles.im_number,5) = handles.initial_nodal_parameters(handles.im_number,5); %%%
+handles.nodal_parameters(handles.im_number,6) = handles.initial_nodal_parameters(handles.im_number,6); %%%
+handles.nodal_parameters(handles.im_number,7) = handles.initial_nodal_parameters(handles.im_number,7); %%%
+handles.nodal_parameters(handles.im_number,8) = handles.initial_nodal_parameters(handles.im_number,8); %%%
+
+guidata(hObject, handles);
+
+%%%%% Set
+set_nodal_all_xy(hObject, eventdata, handles);
+
+%%%%% Figure
+show_figures_PDGUI(hObject, eventdata, handles);
+
+end
+
+% --- Executes on button press in patternSelect_next.
+function patternSelect_next_Callback(hObject, eventdata, handles)
+% hObject    handle to patternSelect_next (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Plus
+if handles.save_nodal_parameters_click == 15
+    handles.save_nodal_parameters_click = 1;
+else
+    handles.save_nodal_parameters_click = handles.save_nodal_parameters_click + 1;
+end
+
+handles.node_pattern = handles.save_nodal_parameters_click;
+loadSelectedPattern(hObject,eventdata,handles);
+end
+
+% --- Executes on button press in patternSelect_prev.
+function patternSelect_prev_Callback(hObject, eventdata, handles)
+% hObject    handle to patternSelect_prev (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Minus
+if handles.save_nodal_parameters_click == 1
+    handles.save_nodal_parameters_click = 15;
+else
+    handles.save_nodal_parameters_click = handles.save_nodal_parameters_click - 1;
+end
+
+handles.node_pattern = handles.save_nodal_parameters_click;
+loadSelectedPattern(hObject, eventdata, handles);
+end
+
+% --- Executes on button press in pushbutton40.
+function pushbutton40_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton40 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+handles.save_nodal_parameters(handles.node_pattern,:) = handles.nodal_parameters(handles.im_number,:);
+
+%%%%% Set
+set_nodal_all_xy(hObject, eventdata, handles)
+ 
+%%%%% Figure
+show_figures_PDGUI(hObject, eventdata, handles)
+end
+
+% --- Executes on button press in pushbutton41.
+function pushbutton41_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton41 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+im_number_last = handles.im_number - 1;
+if im_number_last == 0
+    im_number_last = 1;
+end
+
+handles.nodal_parameters(handles.im_number,1) = handles.nodal_parameters(im_number_last,1); %%%
+handles.nodal_parameters(handles.im_number,2) = handles.nodal_parameters(im_number_last,2); %%%
+handles.nodal_parameters(handles.im_number,3) = handles.nodal_parameters(im_number_last,3); %%%
+handles.nodal_parameters(handles.im_number,4) = handles.nodal_parameters(im_number_last,4); %%%
+handles.nodal_parameters(handles.im_number,5) = handles.nodal_parameters(im_number_last,5); %%%
+handles.nodal_parameters(handles.im_number,6) = handles.nodal_parameters(im_number_last,6); %%%
+handles.nodal_parameters(handles.im_number,7) = handles.nodal_parameters(im_number_last,7); %%%
+handles.nodal_parameters(handles.im_number,8) = handles.nodal_parameters(im_number_last,8); %%%
+
+
+ %%%%% Set
+ set_nodal_all_xy(hObject, eventdata, handles)
+ 
+%%%%% Figure
+ show_figures_PDGUI(hObject, eventdata, handles)
+end
+
+% --- Executes on text edit in pattern_chooser
+function pattern_chooser_Callback(hObject, eventdata, handles)
+% hObject    handle to pattern_chooser (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of pattern_chooser as text
+%        str2double(get(hObject,'String')) returns contents of pattern_chooser as a double
+handles.save_nodal_parameters_click = round(str2double(get(hObject,'String')));
+if handles.save_nodal_parameters_click > 15
+    handles.save_nodal_parameters_click = 15;
+elseif handles.save_nodal_parameters_click <1
+      handles.save_nodal_parameters_click = 1;
+end
+
+handles.node_pattern = handles.save_nodal_parameters_click;
+loadSelectedPattern(hObject,eventdata,handles);
+end
+
+%%%%%%%%%%%%%%%%%%%% Helper functions for callbacks %%%%%%%%%%%%%%%%%%%%%%
+
+function loadSelectedPattern(hObject, eventdata, handles)
+if handles.node_pattern == 0
+    handles.node_pattern = size(handles.save_nodal_parameters,1);
+end
+
+set(handles.pattern_chooser,'String',handles.node_pattern);
+
+handles.nodal_parameters(handles.im_number,1) = handles.save_nodal_parameters(handles.node_pattern,1); %%%
+handles.nodal_parameters(handles.im_number,2) = handles.save_nodal_parameters(handles.node_pattern,2); %%%
+handles.nodal_parameters(handles.im_number,3) = handles.save_nodal_parameters(handles.node_pattern,3); %%%
+handles.nodal_parameters(handles.im_number,4) = handles.save_nodal_parameters(handles.node_pattern,4); %%%
+handles.nodal_parameters(handles.im_number,5) = handles.save_nodal_parameters(handles.node_pattern,5); %%%
+handles.nodal_parameters(handles.im_number,6) = handles.save_nodal_parameters(handles.node_pattern,6); %%%
+handles.nodal_parameters(handles.im_number,7) = handles.save_nodal_parameters(handles.node_pattern,7); %%%
+handles.nodal_parameters(handles.im_number,8) = handles.save_nodal_parameters(handles.node_pattern,8); %%%
+
+%%%%% Set
+set_nodal_all_xy(hObject, eventdata, handles)
+
+%%%%% Figure
+show_figures_PDGUI(hObject, eventdata, handles)
+
+guidata(hObject, handles);
+end
+
+%% Callbacks - Save to file
 
 % --- Executes on button press in pushbutton1_set.
 function pushbutton1_set_Callback(hObject, eventdata, handles)
@@ -969,10 +1454,14 @@ ROIObj = impoly(handles.axes1,[handles.x_roi_undef, handles.y_roi_undef],'Closed
 ROI = createMask(ROIObj);
 delete(ROIObj);
 
+x_roi = handles.x_roi_undef;
+y_roi = handles.y_roi_undef;
+IM_unreg = handles.IM_defs;
+saveFilename = handles.filename;
+nodepatterns = handles.save_nodal_parameters;
 
-IM_def_corr = [];
-Area_Change_def = [];
-percentComplete = 0;
+IM_def_corr = zeros(size(handles.IM_defs)).*NaN; %preallocate for speed
+Area_Change_def = IM_def_corr; %preallocating
 pbar = zeros(1,100);
 axes(handles.axes2);
 
@@ -992,12 +1481,16 @@ for i1 = 1:handles.im_number_end
     if i1 == 1
         hold off;
     end
-    if i1 == 2
+    if i1 ~= 1
         delete(handles.pbar_plot);
     end
-
+    
     handles.pbar_plot = bar(handles.axes2,pbar,'FaceColor',[0 .5 .5],'EdgeColor',[0 .5 .5]);
-    set(handles.completionStatus,'String',[num2str(percentComplete,3),'%']);
+    if percentComplete == 100
+        set(handles.completionStatus,'String',[num2str(percentComplete,3),'%']);
+    else
+        set(handles.completionStatus,'String',[num2str(percentComplete,2),'%']);
+    end
     hold on;
     axis([ 0 100, 0 1]);
     axis off;
@@ -1023,13 +1516,13 @@ for i1 = 1:handles.im_number_end
     %%%%%% This is correct %%%%%% %%% 03/07/2012
     IM_def_in_undef_febl = interp2(handles.IM_defs(:,:,i1), X_def_febl,Y_def_febl);
     IM_def_in_undef_febl = IM_def_in_undef_febl .* Area_Change;
-    IM_def_in_undef_febl(find(isnan(IM_def_in_undef_febl) == 1)) = 0;
-    IM_def_corr = cat(3,IM_def_corr,IM_def_in_undef_febl);
-    Area_Change_def = cat(3,Area_Change_def,Area_Change);
+    IM_def_in_undef_febl(isnan(IM_def_in_undef_febl)) = 0;
+    IM_def_corr(:,:,i1) = IM_def_in_undef_febl;
+    Area_Change_def(:,:,i1) = Area_Change;
     pause(.01);
 end
 
-save(handles.filename, 'Ig8', 'IM_def_corr', 'breathhold', 'imageq', 'Area_Change_def','ROI');
+save(handles.filename, 'Ig8', 'IM_def_corr', 'breathhold', 'imageq', 'Area_Change_def','ROI','x_roi','y_roi','IM_unreg','nodepatterns','saveFilename');
 delete(handles.pbar_plot);
 set(handles.completionStatus,'String','Save Complete');
 
@@ -1037,176 +1530,15 @@ set(hObject,'Enable','on');
 guidata(hObject, handles);
 end
 
-
-% --- Executes on button press in pushbutton2_set.
-function pushbutton2_set_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton2_set (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-handles.nodal_parameters(handles.im_number,1) = handles.initial_nodal_parameters(handles.im_number,1); %%%
-handles.nodal_parameters(handles.im_number,2) = handles.initial_nodal_parameters(handles.im_number,2); %%%
-handles.nodal_parameters(handles.im_number,3) = handles.initial_nodal_parameters(handles.im_number,3); %%%
-handles.nodal_parameters(handles.im_number,4) = handles.initial_nodal_parameters(handles.im_number,4); %%%
-handles.nodal_parameters(handles.im_number,5) = handles.initial_nodal_parameters(handles.im_number,5); %%%
-handles.nodal_parameters(handles.im_number,6) = handles.initial_nodal_parameters(handles.im_number,6); %%%
-handles.nodal_parameters(handles.im_number,7) = handles.initial_nodal_parameters(handles.im_number,7); %%%
-handles.nodal_parameters(handles.im_number,8) = handles.initial_nodal_parameters(handles.im_number,8); %%%
-
-guidata(hObject, handles);
-
-%%%%% Set
-set_nodal_a_xy(hObject, eventdata, handles);
-
-%%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles);
-
-end
-
-% --- Executes on button press in pattern1_save.
-function pattern1_save_Callback(hObject, eventdata, handles)
-% hObject    handle to pattern1_save (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Plus
-handles.save_nodal_parameters_click = handles.save_nodal_parameters_click + 1;
-
-node_pattern = mod(handles.save_nodal_parameters_click, size(handles.save_nodal_parameters,1));
-if node_pattern == 0
-    node_pattern = size(handles.save_nodal_parameters,1);
-end
-
-set(handles.edit12,'String',node_pattern);
-
-%%%% Pattern
-% handles.save_nodal_parameters(handles.node_pattern,1) = handles.nodal_parameters(handles.im_number,1); %%%
-% handles.save_nodal_parameters(handles.node_pattern,2) = handles.nodal_parameters(handles.im_number,2); %%%
-% handles.save_nodal_parameters(handles.node_pattern,3) = handles.nodal_parameters(handles.im_number,3); %%%
-% handles.save_nodal_parameters(handles.node_pattern,4) = handles.nodal_parameters(handles.im_number,4); %%%
-% handles.save_nodal_parameters(handles.node_pattern,5) = handles.nodal_parameters(handles.im_number,5); %%%
-% handles.save_nodal_parameters(handles.node_pattern,6) = handles.nodal_parameters(handles.im_number,6); %%%
-% handles.save_nodal_parameters(handles.node_pattern,7) = handles.nodal_parameters(handles.im_number,7); %%%
-% handles.save_nodal_parameters(handles.node_pattern,8) = handles.nodal_parameters(handles.im_number,8); %%%
-
-handles.nodal_parameters(handles.im_number,1) = handles.save_nodal_parameters(node_pattern,1); %%%
-handles.nodal_parameters(handles.im_number,2) = handles.save_nodal_parameters(node_pattern,2); %%%
-handles.nodal_parameters(handles.im_number,3) = handles.save_nodal_parameters(node_pattern,3); %%%
-handles.nodal_parameters(handles.im_number,4) = handles.save_nodal_parameters(node_pattern,4); %%%
-handles.nodal_parameters(handles.im_number,5) = handles.save_nodal_parameters(node_pattern,5); %%%
-handles.nodal_parameters(handles.im_number,6) = handles.save_nodal_parameters(node_pattern,6); %%%
-handles.nodal_parameters(handles.im_number,7) = handles.save_nodal_parameters(node_pattern,7); %%%
-handles.nodal_parameters(handles.im_number,8) = handles.save_nodal_parameters(node_pattern,8); %%%
-
-%%%%% Set
-set_nodal_a_xy(hObject, eventdata, handles)
-
-%%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles)
-
-guidata(hObject, handles);
-end
-
-
-% --- Executes on button press in pattern1_show.
-function pattern1_show_Callback(hObject, eventdata, handles)
-% hObject    handle to pattern1_show (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Minus
-handles.save_nodal_parameters_click = handles.save_nodal_parameters_click - 1;
-
-node_pattern = mod(handles.save_nodal_parameters_click, size(handles.save_nodal_parameters,1));
-if node_pattern == 0
-    node_pattern = size(handles.save_nodal_parameters,1);
-end
-
-set(handles.edit12,'String',node_pattern);
-
-%%%% Pattern
-% handles.save_nodal_parameters(handles.node_pattern,1) = handles.nodal_parameters(handles.im_number,1); %%%
-% handles.save_nodal_parameters(handles.node_pattern,2) = handles.nodal_parameters(handles.im_number,2); %%%
-% handles.save_nodal_parameters(handles.node_pattern,3) = handles.nodal_parameters(handles.im_number,3); %%%
-% handles.save_nodal_parameters(handles.node_pattern,4) = handles.nodal_parameters(handles.im_number,4); %%%
-% handles.save_nodal_parameters(handles.node_pattern,5) = handles.nodal_parameters(handles.im_number,5); %%%
-% handles.save_nodal_parameters(handles.node_pattern,6) = handles.nodal_parameters(handles.im_number,6); %%%
-% handles.save_nodal_parameters(handles.node_pattern,7) = handles.nodal_parameters(handles.im_number,7); %%%
-% handles.save_nodal_parameters(handles.node_pattern,8) = handles.nodal_parameters(handles.im_number,8); %%%
-
-handles.nodal_parameters(handles.im_number,1) = handles.save_nodal_parameters(node_pattern,1); %%%
-handles.nodal_parameters(handles.im_number,2) = handles.save_nodal_parameters(node_pattern,2); %%%
-handles.nodal_parameters(handles.im_number,3) = handles.save_nodal_parameters(node_pattern,3); %%%
-handles.nodal_parameters(handles.im_number,4) = handles.save_nodal_parameters(node_pattern,4); %%%
-handles.nodal_parameters(handles.im_number,5) = handles.save_nodal_parameters(node_pattern,5); %%%
-handles.nodal_parameters(handles.im_number,6) = handles.save_nodal_parameters(node_pattern,6); %%%
-handles.nodal_parameters(handles.im_number,7) = handles.save_nodal_parameters(node_pattern,7); %%%
-handles.nodal_parameters(handles.im_number,8) = handles.save_nodal_parameters(node_pattern,8); %%%
-
-%%%%% Set
-set_nodal_a_xy(hObject, eventdata, handles)
-
-%%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles)
-
-guidata(hObject, handles);
-end
-
-% --- Executes on button press in pushbutton40.
-function pushbutton40_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton40 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Keep
-% handles.node_pattern = 15;
-handles.save_nodal_parameters_click_2 = handles.save_nodal_parameters_click_2 + 1;
-
-node_pattern_2 = mod(handles.save_nodal_parameters_click_2, size(handles.save_nodal_parameters,1));
-if node_pattern_2 == 0
-    node_pattern_2 = size(handles.save_nodal_parameters,1);
-end
-%handles.save_nodal_parameters = [handles.save_nodal_parameters; handles.nodal_parameters(handles.im_number,:)];
-handles.save_nodal_parameters(node_pattern_2,:) = handles.nodal_parameters(handles.im_number,:);
-
-%%%%% Set
-set_nodal_a_xy(hObject, eventdata, handles)
- 
-%%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles)
-end
-
- % --- Executes on button press in pushbutton41.
-function pushbutton41_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton41 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-im_number_last = handles.im_number - 1;
-if im_number_last == 0
-    im_number_last = 1;
-end
-
-handles.nodal_parameters(handles.im_number,1) = handles.nodal_parameters(im_number_last,1); %%%
-handles.nodal_parameters(handles.im_number,2) = handles.nodal_parameters(im_number_last,2); %%%
-handles.nodal_parameters(handles.im_number,3) = handles.nodal_parameters(im_number_last,3); %%%
-handles.nodal_parameters(handles.im_number,4) = handles.nodal_parameters(im_number_last,4); %%%
-handles.nodal_parameters(handles.im_number,5) = handles.nodal_parameters(im_number_last,5); %%%
-handles.nodal_parameters(handles.im_number,6) = handles.nodal_parameters(im_number_last,6); %%%
-handles.nodal_parameters(handles.im_number,7) = handles.nodal_parameters(im_number_last,7); %%%
-handles.nodal_parameters(handles.im_number,8) = handles.nodal_parameters(im_number_last,8); %%%
-
-
- %%%%% Set
- set_nodal_a_xy(hObject, eventdata, handles)
- 
-%%%%% Figure
- show_figures_PDGUI(hObject, eventdata, handles)
- end
+%% Callbacks - Figure Display
 
 %%% ---- Show figures
 function show_figures_PDGUI(hObject, eventdata, handles)
-%clear the figure if it exists
+
+%clear the figure if it exists, note that ishandle fails if variable
+%doesn't exist, which is why I check if the structure field exists first
+%there is probably a better way, but this at least seems to work
+
 if isfield(handles,'im_fig')
     if ishandle(handles.im_fig)
        delete(handles.im_fig);
@@ -1231,31 +1563,34 @@ if isfield(handles,'outline_im')
    end
 end
 
-if exist('Node1')
+if exist('Node1','var')
 delete(Node1);
 end
 
-if exist('Node2')
+if exist('Node2','var')
 delete(Node2);
 end
 
-if exist('Node3')
+if exist('Node3','var')
 delete(Node3);
 end
 
-if exist('Node4')
+if exist('Node4','var')
 delete(Node4);
 end
 
-if exist('NodeCenter')
+if exist('NodeCenter','var')
 delete(NodeCenter);
 end
- 
+% end clear
+
+%display the new image
 hold off;
 axes(handles.axes1);
 handles.im_fig = imagesc(handles.IM_defs(:,:,handles.im_number)); colormap hot; caxis([0, max(max(max(handles.IM_defs))).*0.3]);
 axis ij; axis([-10 , 266, -10 , 266]); handles.ah = axis; 
 
+%additional display options based on radio-button/image-quality values
 
 if handles.display_nodes_val == 1
     NodeAdjust = 5; %space the visual markers a out a little from the actual node point (helps with draggability)
@@ -1298,49 +1633,56 @@ elseif (handles.display_center_val == 1) && (handles.display_nodes_val == 0)
     redraw();
 end
 
-
 if handles.display_Blurr_val == 1
    redraw();
 end
 
-
 if handles.display_ROI_val == 1
+    %first time roi, set modifying flag to one and create
     if isempty(handles.x_roi_undef) && (handles.modifying_ROI == 0)
       handles.ROI = impoly(handles.axes1,'Closed',true);
       handles.modifying_ROI = 1;
+      handles.ROIPosition = getPosition(handles.ROI);
     else
+        %editing prev ROI:
+        %if we weren't previously modifying, create ROI based on the ROI
+        %vertices saved
         if handles.modifying_ROI == 0
               handles.ROI = impoly(handles.axes1,[handles.x_roi_undef, handles.y_roi_undef],'Closed',true);
+              handles.ROIPosition = getPosition(handles.ROI);
               handles.modifying_ROI = 1;
         else
+        %if we were already modifying the ROI and the image has updated,
+        %create a new ROI based on the last known position of the previous
+        %one
+              
               handles.ROI = impoly(handles.axes1,handles.ROIPosition,'Closed',true);
-        end
-        
+        end 
     end
     
     addNewPositionCallback(handles.ROI,@updateROIPos); 
     guidata(hObject, handles);
 end
 
-
 if handles.badbreathhold(handles.im_number) == 1;
-        hold on; plot(handles.axes1,10, 10,'ws',...
+        hold on; plot(10, 10,'ws',...
                         'MarkerEdgeColor','r',...
                         'MarkerFaceColor','r',...
                         'MarkerSize',15); %, 'ButtonDownFcn', @axes1_ButtonDownFcn);
-        hold on; text(handles.axes1,10, 20,'\color[rgb]{1 1 1}BadBreathHold',...
+        hold on; text(20, 10,'\color[rgb]{1 1 1}BadBreathHold',...
             'FontSize',10);
 end
 
 if handles.badimage(handles.im_number) == 1;
-        hold on; plot(handles.axes1,20, 10,'ws',...
-                        'MarkerEdgeColor','g',...
-                        'MarkerFaceColor','g',...
+        hold on; plot(handles.axes1,10, 20,'ws',...
+                        'MarkerEdgeColor','b',...
+                        'MarkerFaceColor','b',...
                         'MarkerSize',15); %, 'ButtonDownFcn', @axes1_ButtonDownFcn);
-        hold on; text(handles.axes1,20, 20,'\color[rgb]{1 1 1}BadImage',...
+        hold on; text(20, 20,'\color[rgb]{1 1 1}BadImage',...
             'FontSize',10);
 end
 
+%position callbacks for imroi objects
 function updateROIPos(pos)
     handles.ROIPosition = pos;
     guidata(hObject,handles);
@@ -1359,10 +1701,9 @@ function updateN1(h)
         updateCenterOnDistort();       
         redraw();
         guidata(hObject, handles);
-        set_nodal_a_xy(hObject, eventdata, handles);
+        set_nodal_all_xy(hObject, eventdata, handles);
         set(handles.completionStatus,'String','Unsaved Changes');
-end
-        
+end        
         
 function updateN2(h)
         handles.nodal_parameters(handles.im_number,[2 6]) = h + [-NodeAdjust NodeAdjust];
@@ -1371,7 +1712,7 @@ function updateN2(h)
         updateCenterOnDistort();     
         redraw();
         guidata(hObject, handles);
-        set_nodal_a_xy(hObject, eventdata, handles);
+        set_nodal_all_xy(hObject, eventdata, handles);
         set(handles.completionStatus,'String','Unsaved Changes');
 
        
@@ -1384,7 +1725,7 @@ function updateN3(h)
         updateCenterOnDistort();     
         redraw();
         guidata(hObject, handles);
-        set_nodal_a_xy(hObject, eventdata, handles);
+        set_nodal_all_xy(hObject, eventdata, handles);
         set(handles.completionStatus,'String','Unsaved Changes');
      
 end
@@ -1396,7 +1737,7 @@ function updateN4(h)
         updateCenterOnDistort();     
         redraw();
         guidata(hObject, handles);
-        set_nodal_a_xy(hObject, eventdata, handles);
+        set_nodal_all_xy(hObject, eventdata, handles);
         set(handles.completionStatus,'String','Unsaved Changes');
 end
 
@@ -1413,11 +1754,10 @@ function updateNC(h)
     setPosition(Node4,(getPosition(Node4)+[shiftx shifty]));
     redraw();
     guidata(hObject, handles);
-    set_nodal_a_xy(hObject, eventdata, handles);
+    set_nodal_all_xy(hObject, eventdata, handles);
     set(handles.completionStatus,'String','Unsaved Changes');
 end
         
-
 function redraw()
 
 if isfield(handles,'outline_im')
@@ -1426,6 +1766,25 @@ if isfield(handles,'outline_im')
     end
 end
 
+if isfield(handles,'refmarker')
+   if ishandle(handles.refmarker)
+   delete(handles.refmarker);
+   handles = rmfield(handles,'refmarker');
+   delete(handles.reftext);
+   handles = rmfield(handles,'reftext');
+   end
+end
+
+if ~isempty(handles.nodal_parameters)
+    if all(handles.nodal_parameters(handles.im_number,:) ==handles.reference_pattern)
+       hold on; handles.refmarker = plot(handles.axes1,10, 30,'ws',...
+                        'MarkerEdgeColor','g',...
+                        'MarkerFaceColor','g',...
+                        'MarkerSize',15); %, 'ButtonDownFcn', @axes1_ButtonDownFcn);
+        hold on; handles.reftext = text(20, 30,'\color[rgb]{1 1 1}Reference',...
+            'FontSize',10);
+    end
+end
                             
 if handles.display_disp_val == 1                                        
     min_x = min(handles.x_roi_undef);
@@ -1436,11 +1795,12 @@ if handles.display_disp_val == 1
     step_x = (max_x - min_x) / 8;
     step_y = (max_y - min_y) / 8;
     [x_undef_d, y_undef_d] = meshgrid(min_x : step_x : max_x, min_y : step_y : max_y);
+    
     [x_def_d, y_def_d] = roi_undef_to_roi_def_8(x_undef_d, y_undef_d,...
         handles.xi_Xundef, handles.xi_Yundef,...
         handles.nodal_parameters(handles.im_number,:));
     disp_u = x_def_d - x_undef_d;
-    disp_v = y_def_d - y_undef_d;
+    disp_v = y_def_d - y_undef_d; hold on;
     quiver(x_undef_d, y_undef_d, disp_u, disp_v,'b','Autoscale','off'); axis ij;
 end
 
@@ -1521,358 +1881,16 @@ guidata(hObject, handles);
 
 end
 
-%%% ---- Set Nodal_a_xy
-function set_nodal_a_xy(hObject, eventdata, handles)
-%update text boxes
-set(handles.nodal_1_x,'String',handles.nodal_parameters(handles.im_number,1));
-set(handles.nodal_1_y,'String',handles.nodal_parameters(handles.im_number,5));
-set(handles.nodal_2_x,'String',handles.nodal_parameters(handles.im_number,2));
-set(handles.nodal_2_y,'String',handles.nodal_parameters(handles.im_number,6));
-set(handles.nodal_3_x,'String',handles.nodal_parameters(handles.im_number,3));
-set(handles.nodal_3_y,'String',handles.nodal_parameters(handles.im_number,7));
-set(handles.nodal_4_x,'String',handles.nodal_parameters(handles.im_number,4));
-set(handles.nodal_4_y,'String',handles.nodal_parameters(handles.im_number,8));
 
-%update sliders
-set(handles.slider1_1x, 'Value', handles.nodal_parameters(handles.im_number,1));
-set(handles.slider2_1y, 'Value', handles.nodal_parameters(handles.im_number,5)); 
-set(handles.slider3_2x, 'Value', handles.nodal_parameters(handles.im_number,2)); 
-set(handles.slider4_2y, 'Value', handles.nodal_parameters(handles.im_number,6)); 
-set(handles.slider5_3x, 'Value', handles.nodal_parameters(handles.im_number,3)); 
-set(handles.slider6_3y, 'Value', handles.nodal_parameters(handles.im_number,7)); 
-set(handles.slider7_4x, 'Value', handles.nodal_parameters(handles.im_number,4)); 
-set(handles.slider8_4y, 'Value', handles.nodal_parameters(handles.im_number,8));
-
-
-guidata(hObject, handles);
-end
-
-
-% --- Executes on button press in badbreath.
-function badbreath_Callback(hObject, eventdata, handles)
-% hObject    handle to badbreath (see GCBO)
+% --- Executes on button press in setDefault.
+function setDefault_Callback(hObject, eventdata, handles)
+% hObject    handle to setDefault (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-if handles.badbreathhold(handles.im_number) == 0
-    handles.badbreathhold(handles.im_number) = 1;
-else
-    handles.badbreathhold(handles.im_number) = 0;
-end
+handles.reference_pattern = handles.nodal_parameters(handles.im_number,:);
 
-%%%%% Set
-set_nodal_a_xy(hObject, eventdata, handles)
-%%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles)
-guidata(hObject, handles);
-end
-
-
-% --- Executes on button press in badimage.
-function badimage_Callback(hObject, eventdata, handles)
-% hObject    handle to badimage (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-if handles.badimage(handles.im_number) == 0
-    handles.badimage(handles.im_number) = 1;
-else
-    handles.badimage(handles.im_number) = 0;
-end
-
-%%%%% Set
-set_nodal_a_xy(hObject, eventdata, handles)
-%%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles)
-guidata(hObject, handles);
-end
-
-
-function edit12_Callback(hObject, eventdata, handles)
-% hObject    handle to edit12 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit12 as text
-%        str2double(get(hObject,'String')) returns contents of edit12 as a double
-handles.save_nodal_parameters_click = round(str2double(get(hObject,'String')));
-
-node_pattern = mod(handles.save_nodal_parameters_click, size(handles.save_nodal_parameters,1));
-if node_pattern == 0
-    node_pattern = size(handles.save_nodal_parameters,1);
-end
-
-set(handles.edit12,'String',node_pattern);
-
-%%%% Pattern
-handles.nodal_parameters(handles.im_number,1) = handles.save_nodal_parameters(node_pattern,1); %%%
-handles.nodal_parameters(handles.im_number,2) = handles.save_nodal_parameters(node_pattern,2); %%%
-handles.nodal_parameters(handles.im_number,3) = handles.save_nodal_parameters(node_pattern,3); %%%
-handles.nodal_parameters(handles.im_number,4) = handles.save_nodal_parameters(node_pattern,4); %%%
-handles.nodal_parameters(handles.im_number,5) = handles.save_nodal_parameters(node_pattern,5); %%%
-handles.nodal_parameters(handles.im_number,6) = handles.save_nodal_parameters(node_pattern,6); %%%
-handles.nodal_parameters(handles.im_number,7) = handles.save_nodal_parameters(node_pattern,7); %%%
-handles.nodal_parameters(handles.im_number,8) = handles.save_nodal_parameters(node_pattern,8); %%%
-
-%%%%% Set
-set_nodal_a_xy(hObject, eventdata, handles);
-guidata(hObject, handles);
-show_figures_PDGUI(hObject, eventdata, handles)
-end
-
-
-% --- Executes during object creation, after setting all properties.
-function edit12_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit12 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-end
-
-
-% --- Executes on key press with focus on GuiMainWindow or any of its controls.
-function GuiMainWindow_WindowKeyPressFcn(hObject, eventdata, handles)
-% hObject    handle to GuiMainWindow (see GCBO)
-% eventdata  structure with the following fields (see FIGURE)
-%	Key: name of the key that was pressed, in lower case
-%	Character: character interpretation of the key(s) that was pressed
-%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
-% handles    structure with handles and user data (see GUIDATA)
-
-switch eventdata.Key
-    case 'rightarrow'
-        if handles.im_number < handles.im_number_end
-            handles.im_number = handles.im_number+1;
-            resetImg();
-            pause(.03);
-        end
-        
-    case 'leftarrow'
-        if handles.im_number > 1
-            handles.im_number = handles.im_number+1;
-             resetImg();
-             pause(.03);
-        end
-        
-end
-
-    function resetImg()
-        set(handles.im_number_edit,'String',handles.im_number);
-        guidata(hObject, handles);
-        set_nodal_a_xy(hObject, eventdata, handles);
-        set(handles.image_slider, 'Value', handles.im_number);
-        show_figures_PDGUI(hObject, eventdata, handles);
-    end
-
-
-end
-
-
-% --- Executes on button press in display_ROI.
-function display_ROI_Callback(hObject, eventdata, handles)
-% hObject    handle to display_ROI (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of display_ROI
-
-handles.display_ROI_val = get(hObject,'Value');
-
-if handles.display_ROI_val == 1
-    set(handles.slider1_1x, 'enable', 'off');
-    set(handles.slider2_1y, 'enable','off'); 
-    set(handles.slider3_2x, 'enable', 'off'); 
-    set(handles.slider4_2y, 'enable', 'off');
-    set(handles.slider5_3x, 'enable', 'off'); 
-    set(handles.slider6_3y, 'enable', 'off'); 
-    set(handles.slider7_4x, 'enable', 'off'); 
-    set(handles.slider8_4y, 'enable', 'off');
-    set(handles.display_center, 'enable', 'off');
-    set(handles.display_nodes, 'enable', 'off');
-    set(handles.display_Blurr, 'enable', 'off');
-    set(handles.display_disp, 'enable', 'off');
-    set(handles.accept_ROI, 'enable', 'on');
-    set(handles.display_ROI, 'enable', 'off');
-     
-    
-    %%%% Radio Button
-    set(handles.display_center,'Value',0);
-    set(handles.display_nodes,'Value',0);
-    set(handles.display_Blurr,'Value',0);
-    set(handles.display_disp,'Value',0); 
-    
-    handles.display_center_val = 0;
-    handles.display_nodes_val = 0;
-    handles.display_Blurr_val = 0;
-    handles.display_disp_val = 0;
-end
-
-    
-guidata(hObject, handles);
-show_figures_PDGUI(hObject, eventdata, handles);
-end
-
-
-% --- Executes on button press in accept_ROI.
-function accept_ROI_Callback(hObject, eventdata, handles)
-% hObject    handle to accept_ROI (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-    set(hObject,'enable','off');
-
-    handles.modifying_ROI = 0;
-    newROIPos = getPosition(handles.ROI);
-    
-    delete(handles.ROI);
-    handles.x_roi_undef = newROIPos(:,1);
-    handles.y_roi_undef = newROIPos(:,2);
-    handles.x_roi_undef(end+1) = handles.x_roi_undef(1);
-    handles.y_roi_undef(end+1) = handles.y_roi_undef(1);
-    min_x = min(handles.x_roi_undef); 
-    max_x = max(handles.x_roi_undef);
-    min_y = min(handles.y_roi_undef);
-    max_y = max(handles.y_roi_undef);
-    [X_undef, Y_undef] = meshgrid(1:size(handles.IM_defs,2),1:size(handles.IM_defs,1));
-    handles.xi_Xundef = (X_undef - min_x) / (max_x - min_x);
-    handles.xi_Yundef = (Y_undef - min_y) / (max_y - min_y);
-    % handles.nodal_parameters = [min_x, max_x, min_x, max_x, min_y, min_y, max_y, max_y];
-
-    if isempty(handles.nodal_parameters)
-        
-        handles.nodal_parameters = [min_x * ones(handles.im_number_end,1), max_x * ones(handles.im_number_end,1),...
-            min_x * ones(handles.im_number_end,1), max_x * ones(handles.im_number_end,1),...
-            min_y * ones(handles.im_number_end,1), min_y * ones(handles.im_number_end,1),...
-            max_y * ones(handles.im_number_end,1), max_y * ones(handles.im_number_end,1)];
-        
-        handles.initial_nodal_parameters = handles.nodal_parameters;
-        handles.save_nodal_parameters = handles.nodal_parameters([1:15],:);
-        handles.save_nodal_parameters_click = 0;
-        handles.save_nodal_parameters_click_2 = 0;
-        %handles.save_nodal_parameters = handles.nodal_parameters([1:15],:);
-    end
-
-    %%% Node 1 x slider
-    sliderMin_1x = -10;
-    sliderMax_1x = size(handles.IM_defs,2) + 50; % this is variable
-    sliderStep_1x = [1, 1] / (sliderMax_1x - sliderMin_1x); % major and minor steps of 1
-
-    set(handles.slider1_1x, 'Min', sliderMin_1x);
-    set(handles.slider1_1x, 'Max', sliderMax_1x);
-    set(handles.slider1_1x, 'SliderStep', sliderStep_1x);
-    set(handles.slider1_1x, 'Value', min_x); % set to beginning of sequence
-
-    %%% Node 1 y slider
-    sliderMin_1y = -10;
-    sliderMax_1y = size(handles.IM_defs,1) + 50; % this is variable
-    sliderStep_1y = [1, 1] / (sliderMax_1y - sliderMin_1y); % major and minor steps of 1
-
-    set(handles.slider2_1y, 'Min', sliderMin_1y);
-    set(handles.slider2_1y, 'Max', sliderMax_1y);
-    set(handles.slider2_1y, 'SliderStep', sliderStep_1y);
-    set(handles.slider2_1y, 'Value', min_y); % set to beginning of sequence
-
-    %%% Node 2 x slider
-    sliderMin_2x = -10;
-    sliderMax_2x = size(handles.IM_defs,2) + 50; % this is variable
-    sliderStep_2x = [1, 1] / (sliderMax_2x - sliderMin_2x); % major and minor steps of 1
-
-    set(handles.slider3_2x, 'Min', sliderMin_2x);
-    set(handles.slider3_2x, 'Max', sliderMax_2x);
-    set(handles.slider3_2x, 'SliderStep', sliderStep_2x);
-    set(handles.slider3_2x, 'Value', max_x); % set to beginning of sequence
-
-    %%% Node 2 y slider
-    sliderMin_2y = -10;
-    sliderMax_2y = size(handles.IM_defs,1) + 50; % this is variable
-    sliderStep_2y = [1, 1] / (sliderMax_2y - sliderMin_2y); % major and minor steps of 1
-
-    set(handles.slider4_2y, 'Min', sliderMin_2y);
-    set(handles.slider4_2y, 'Max', sliderMax_2y);
-    set(handles.slider4_2y, 'SliderStep', sliderStep_2y);
-    set(handles.slider4_2y, 'Value', min_y); % set to beginning of sequence
-
-    %%% Node 3 x slider
-    sliderMin_3x = -10;
-    sliderMax_3x = size(handles.IM_defs,2) + 50; % this is variable
-    sliderStep_3x = [1, 1] / (sliderMax_3x - sliderMin_3x); % major and minor steps of 1
-
-    set(handles.slider5_3x, 'Min', sliderMin_3x);
-    set(handles.slider5_3x, 'Max', sliderMax_3x);
-    set(handles.slider5_3x, 'SliderStep', sliderStep_3x);
-    set(handles.slider5_3x, 'Value', min_x); % set to beginning of sequence
-
-    %%% Node 3 y slider
-    sliderMin_3y = -10;
-    sliderMax_3y = size(handles.IM_defs,1) + 50; % this is variable
-    sliderStep_3y = [1, 1] / (sliderMax_3y - sliderMin_3y); % major and minor steps of 1
-
-    set(handles.slider6_3y, 'Min', sliderMin_3y);
-    set(handles.slider6_3y, 'Max', sliderMax_3y);
-    set(handles.slider6_3y, 'SliderStep', sliderStep_3y);
-    set(handles.slider6_3y, 'Value', max_y); % set to beginning of sequence
-
-    %%% Node 4 x slider
-    sliderMin_4x = -10;
-    sliderMax_4x = size(handles.IM_defs,2) + 50; % this is variable
-    sliderStep_4x = [1, 1] / (sliderMax_4x - sliderMin_4x); % major and minor steps of 1
-
-    set(handles.slider7_4x, 'Min', sliderMin_4x);
-    set(handles.slider7_4x, 'Max', sliderMax_4x);
-    set(handles.slider7_4x, 'SliderStep', sliderStep_4x);
-    set(handles.slider7_4x, 'Value', max_x); % set to beginning of sequence
-
-    %%% Node 3 y slider
-    sliderMin_4y = -10;
-    sliderMax_4y = size(handles.IM_defs,1) + 50; % this is variable
-    sliderStep_4y = [1, 1] / (sliderMax_4y - sliderMin_4y); % major and minor steps of 1
-
-    set(handles.slider8_4y, 'Min', sliderMin_4y);
-    set(handles.slider8_4y, 'Max', sliderMax_4y);
-    set(handles.slider8_4y, 'SliderStep', sliderStep_4y);
-    set(handles.slider8_4y, 'Value', max_y); % set to beginning of sequence
-
-    %%%% Radio Button
-    set(handles.display_center,'Value',1);
-    set(handles.display_nodes,'Value',1);
-    set(handles.display_Blurr,'Value',0);
-    set(handles.display_disp,'Value',0);
-    set(handles.display_ROI,'Value',0); 
-
-    handles.display_ROI_val = 0;
-    handles.display_center_val = 1;
-    handles.display_nodes_val = 1;
-    handles.display_Blurr_val = 0;
-    handles.display_disp_val = 0;
-
-    %%%
-
-    handles.node_pattern = 1;
-    set(handles.edit12,'String',handles.node_pattern);
-    set(handles.im_number_edit,'String',handles.im_number);
-
-    % Update handles structure
-    guidata(hObject, handles);
-    show_figures_PDGUI(hObject, eventdata, handles);
-    set_nodal_a_xy(hObject, eventdata, handles);
-      
-    set(handles.slider1_1x, 'enable', 'on');
-    set(handles.slider2_1y, 'enable','on'); 
-    set(handles.slider3_2x, 'enable', 'on'); 
-    set(handles.slider4_2y, 'enable', 'on');
-    set(handles.slider5_3x, 'enable', 'on'); 
-    set(handles.slider6_3y, 'enable', 'on'); 
-    set(handles.slider7_4x, 'enable', 'on'); 
-    set(handles.slider8_4y, 'enable', 'on');
-    set(handles.display_center, 'enable', 'on');
-    set(handles.display_nodes, 'enable', 'on');
-    set(handles.display_Blurr, 'enable', 'on');
-    set(handles.display_disp, 'enable', 'on');
-    set(handles.display_ROI,'enable','on');
-    set(handles.completionStatus,'String','Unsaved Changes');
-
+ handles.resetting_reference = 1;
+ guidata(hObject, handles);
+ initialize(hObject, eventdata, handles);
 end

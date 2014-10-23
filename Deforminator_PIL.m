@@ -61,6 +61,6 @@ end
 if nargin ==1
     
     load(saveFilename)
-    Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,Ig8,saveFilename,breathhold,imageq);
+    Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,Ig8,saveFilename,breathhold,imageq,nodepatterns);
 
 end
