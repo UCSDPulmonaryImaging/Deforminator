@@ -8,6 +8,8 @@
 
 %Varargin list for .m-file debugging (empty means use [] as placeholder,
 %excluded inputs should not appear at all in the function call
+% note that nargin includes the three default hObject, eventdata, handles
+% in addition to the varargin argument
 
 % 1: x_roi, optionally empty, x coordinates of ROI vertices
 % 2: y_roi, optionally empty, y coordinates of ROI vertices
@@ -410,7 +412,8 @@ set(handles.im_number_edit, 'String', handles.im_number);
 
 %disable for now because it is not currently working
 set(handles.setDefault,'enable','off');
-
+handles.path2save = varargin{6};
+handles.loadedpath = varargin{7};
 
 %if there are predefined nodes keep them, otherwise set to empty array
 %function initialize will check if the array is empty and pre-populate it
@@ -418,23 +421,24 @@ if ~isempty(varargin{4})
     handles.nodal_parameters = varargin{4};
 end
 
-
-
-
-
     if ~isempty(varargin{1}) && ~isempty(varargin{2})
         handles.x_roi_undef = varargin{1};
         handles.y_roi_undef = varargin{2};
+        
 
-
-        if nargin > 8
-            handles.badbreathhold = varargin{6};
-            handles.badimage = varargin{7};
+        if nargin > 10
+            handles.badbreathhold = varargin{8};
+            handles.badimage = varargin{9};
+            handles.save_nodal_parameters = varargin{10};
+            handles.reference_pattern = varargin{11};
+            handles.subject_initials = varargin{12};
+            handles.notes = varargin{13};
             
-            if nargin > 10
-                handles.save_nodal_parameters = varargin{8};  
-            end
-            
+            availsearch = [1:15];
+            % find the first unset nodal pattern (= reference pattern) and set save-to counter to that index
+            % note that the first saved pattern is always the original roi,
+            % and so we only search through 2:15
+            handles.next_available = min(availsearch(squeeze((sum((repmat(handles.reference_pattern,[14 1])==handles.save_nodal_parameters(2:end,:)),2)==8))))+1;
         else
             handles.badbreathhold = zeros(handles.im_number_end,1);
             handles.badimage = zeros(handles.im_number_end,1);
@@ -443,12 +447,16 @@ end
         initialize(hObject, eventdata, handles);
 
     else %this is what you do if an ROI doesn't exist yet    
-
+        handles.next_available = 2;
+        handles.notes = 'notes';
+        handles.subject_initials = 'subject initials';
         handles.x_roi_undef = [];
         handles.y_roi_undef = [];
         handles.nodal_parameters = [];
         handles.badbreathhold = zeros(handles.im_number_end,1);
         handles.badimage = zeros(handles.im_number_end,1);
+        handles.subject_initials = '';
+        handles.notes = '';
         set(handles.slider1_1x, 'enable', 'off'); 
         set(handles.slider2_1y, 'enable','off');
         set(handles.slider3_2x, 'enable', 'off'); 
@@ -717,13 +725,16 @@ switch eventdata.Key
         handles.node_pattern = 10;
         loadSelectedPattern(hObject,eventdata,handles);
         
-    case 'k'
+    case 'k' %keyboard shortcut to save current node pattern into the next available space
         pushbutton40_Callback(hObject, eventdata, handles);
-    
         
+    case 'backspace' %keyboard shortcut to replace selected node pattern (in edit box) with the current figure's pattern
+        handles.save_nodal_parameters(handles.node_pattern,:) = handles.nodal_parameters(handles.im_number,:);
+        guidata(hObject,handles);
         
 end
 
+    %this function is not currently implemented (for resetting default) 
     function resetImg()
         set(handles.im_number_edit,'String',handles.im_number);
         guidata(hObject, handles);
@@ -738,6 +749,7 @@ end
 
 
 end
+
 
 %% Callbacks - Slider Movement
 
@@ -1008,8 +1020,8 @@ if ~isempty(handles.nodal_parameters)
 set_nodal_all_xy(hObject, eventdata, handles)
 end
 %%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles)
 guidata(hObject, handles);
+show_figures_PDGUI(hObject, eventdata, handles);
 end
 
 % --- Executes on button press in badimage.
@@ -1029,8 +1041,9 @@ if ~isempty(handles.nodal_parameters)
 set_nodal_all_xy(hObject, eventdata, handles)
 end
 %%%%% Figure
-show_figures_PDGUI(hObject, eventdata, handles)
+
 guidata(hObject, handles);
+show_figures_PDGUI(hObject, eventdata, handles);
 end
 
 % --- Executes on button press in accept_ROI.
@@ -1287,6 +1300,7 @@ show_figures_PDGUI(hObject, eventdata, handles);
 
 end
 
+
 %% Callbacks - Node Pattern Store & Select
 
 % --- Executes on button press in pushbutton2_set.
@@ -1294,7 +1308,6 @@ function pushbutton2_set_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2_set (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
 
 handles.nodal_parameters(handles.im_number,1) = handles.initial_nodal_parameters(handles.im_number,1); %%%
 handles.nodal_parameters(handles.im_number,2) = handles.initial_nodal_parameters(handles.im_number,2); %%%
@@ -1354,9 +1367,13 @@ function pushbutton40_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton40 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-handles.save_nodal_parameters(handles.node_pattern,:) = handles.nodal_parameters(handles.im_number,:);
-
+handles.save_nodal_parameters(handles.next_available,:) = handles.nodal_parameters(handles.im_number,:);
+set(handles.pattern_chooser,'String',handles.next_available);
+handles.next_available = handles.next_available + 1;
+if handles.next_available > 15
+	handles.next_available = 15;
+end
+guidata(hObject,handles);
 %%%%% Set
 set_nodal_all_xy(hObject, eventdata, handles)
  
@@ -1453,6 +1470,20 @@ imageq = handles.badimage;
 ROIObj = impoly(handles.axes1,[handles.x_roi_undef, handles.y_roi_undef],'Closed',true);
 ROI = createMask(ROIObj);
 delete(ROIObj);
+reference_pattern = handles.reference_pattern;
+path2save = handles.path2save;
+loadedpath = handles.loadedpath;
+homedir = cd;
+subject_initials = handles.subject_initials;
+notes = handles.notes;
+
+%notes and initials prompt
+prompt={'Subject initials:','Notes:'};
+name='Input subject info';
+defaultanswer={subject_initials,notes};
+answer=inputdlg(prompt,name,2,defaultanswer);
+subject_initials=char(answer(1));
+notes=char(answer(2));
 
 x_roi = handles.x_roi_undef;
 y_roi = handles.y_roi_undef;
@@ -1465,17 +1496,17 @@ Area_Change_def = IM_def_corr; %preallocating
 pbar = zeros(1,100);
 axes(handles.axes2);
 
-
-
 if isfield(handles,'pbar_plot')
     if ishandle(handles.pbar_plot)
         delete(handles.pbar_plot);
     end
 end
         
-
 for i1 = 1:handles.im_number_end
     percentComplete = i1/handles.im_number_end*100;
+    if ceil(percentComplete) == 100
+        percentComplete == 99;
+    end
     pbar(ceil(percentComplete)) = 1;
     
     if i1 == 1
@@ -1521,9 +1552,11 @@ for i1 = 1:handles.im_number_end
     Area_Change_def(:,:,i1) = Area_Change;
     pause(.01);
 end
-
-save(handles.filename, 'Ig8', 'IM_def_corr', 'breathhold', 'imageq', 'Area_Change_def','ROI','x_roi','y_roi','IM_unreg','nodepatterns','saveFilename');
+cd(path2save);
+save([path2save,'/',handles.filename], 'Ig8', 'IM_def_corr', 'breathhold', 'imageq', 'Area_Change_def','ROI','x_roi','y_roi','IM_unreg','nodepatterns','saveFilename','reference_pattern','path2save','loadedpath','subject_initials','notes');
 delete(handles.pbar_plot);
+cd(homedir);
+
 set(handles.completionStatus,'String','Save Complete');
 
 set(hObject,'Enable','on');
@@ -1664,21 +1697,24 @@ if handles.display_ROI_val == 1
     guidata(hObject, handles);
 end
 
+hold on; text(20, 10,['\color[rgb]{1 1 1}',handles.loadedpath],...
+     'FontSize',10);
+
 if handles.badbreathhold(handles.im_number) == 1;
-        hold on; plot(10, 10,'ws',...
+        hold on; plot(10, 20,'ws',...
                         'MarkerEdgeColor','r',...
                         'MarkerFaceColor','r',...
                         'MarkerSize',15); %, 'ButtonDownFcn', @axes1_ButtonDownFcn);
-        hold on; text(20, 10,'\color[rgb]{1 1 1}BadBreathHold',...
+        hold on; text(20, 20,'\color[rgb]{1 1 1}BadBreathHold',...
             'FontSize',10);
 end
 
 if handles.badimage(handles.im_number) == 1;
-        hold on; plot(handles.axes1,10, 20,'ws',...
+        hold on; plot(handles.axes1,10, 30,'ws',...
                         'MarkerEdgeColor','b',...
                         'MarkerFaceColor','b',...
                         'MarkerSize',15); %, 'ButtonDownFcn', @axes1_ButtonDownFcn);
-        hold on; text(20, 20,'\color[rgb]{1 1 1}BadImage',...
+        hold on; text(20, 30,'\color[rgb]{1 1 1}BadImage',...
             'FontSize',10);
 end
 
@@ -1777,11 +1813,11 @@ end
 
 if ~isempty(handles.nodal_parameters)
     if all(handles.nodal_parameters(handles.im_number,:) ==handles.reference_pattern)
-       hold on; handles.refmarker = plot(handles.axes1,10, 30,'ws',...
+       hold on; handles.refmarker = plot(handles.axes1,10, 40,'ws',...
                         'MarkerEdgeColor','g',...
                         'MarkerFaceColor','g',...
                         'MarkerSize',15); %, 'ButtonDownFcn', @axes1_ButtonDownFcn);
-        hold on; handles.reftext = text(20, 30,'\color[rgb]{1 1 1}Reference',...
+        hold on; handles.reftext = text(20, 40,'\color[rgb]{1 1 1}Reference',...
             'FontSize',10);
     end
 end
@@ -1881,7 +1917,7 @@ guidata(hObject, handles);
 
 end
 
-
+%% doesn't yet work
 % --- Executes on button press in setDefault.
 function setDefault_Callback(hObject, eventdata, handles)
 % hObject    handle to setDefault (see GCBO)

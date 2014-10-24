@@ -50,17 +50,50 @@ if nargin == 0
     dire0=pwd;
     'Select folder containing data to be registered'
     dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
-    
+    loadedpath = dire2;
+
     %Load all dicom images in 
     [IM_unreg]=LoadAllDicomFiles(dire2);
     cd(home);
-    Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename);
+    Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename,path2save,loadedpath);
 
 end
 
 if nargin ==1
     
     load(saveFilename)
-    Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,Ig8,saveFilename,breathhold,imageq,nodepatterns);
+    
+    %some stuff for backwards compatibility with previous versions (did not
+    %have as many saved outputs)
+    if ~exist('path2save')
+        path2save = cd;
+    end
+    
+    if ~exist('loadedpath')
+        loadedpath = 'Not Available';
+    end
+    
+    if ~exist('reference_pattern')
+        min_x = min(x_roi); 
+        max_x = max(x_roi);
+        min_y = min(y_roi);
+        max_y = max(y_roi);
+        reference_pattern = [min_x, max_x, min_x, max_x, min_y, min_y, max_y, max_y];
+    end
+    
+    if ~exist('nodepatterns')
+        nodepatterns = repmat(reference_pattern,[15,1]);
+    end
+    
+    if ~exist('subject_initials')
+        subject_initials = '';
+    end
+    
+    if ~exist('notes')
+        notes = '';
+    end
+ 
+        
+    Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,Ig8,saveFilename,path2save,loadedpath,breathhold,imageq,nodepatterns,reference_pattern,subject_initials,notes);
 
 end
