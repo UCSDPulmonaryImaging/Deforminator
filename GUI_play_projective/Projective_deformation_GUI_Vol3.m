@@ -1335,7 +1335,7 @@ function patternSelect_next_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Plus
-if handles.save_nodal_parameters_click == 15
+if handles.save_nodal_parameters_click >= 15
     handles.save_nodal_parameters_click = 1;
 else
     handles.save_nodal_parameters_click = handles.save_nodal_parameters_click + 1;
@@ -1352,7 +1352,7 @@ function patternSelect_prev_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Minus
-if handles.save_nodal_parameters_click == 1
+if handles.save_nodal_parameters_click <= 1
     handles.save_nodal_parameters_click = 15;
 else
     handles.save_nodal_parameters_click = handles.save_nodal_parameters_click - 1;
@@ -1486,6 +1486,8 @@ answer=inputdlg(prompt,name,2,defaultanswer);
 if ~isempty(answer)
     subject_initials=char(answer(1));
     notes=char(answer(2));
+    handles.subject_initials = subject_initials;
+    handles.notes = notes;
 end
 
 x_roi = handles.x_roi_undef;
