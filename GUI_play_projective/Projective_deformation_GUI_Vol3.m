@@ -754,12 +754,6 @@ switch eventdata.Key
     case 'x'
         pushbutton2_set_Callback(hObject, eventdata, handles); %initial pattern
     
-    case 'a'
-        patternSelect_prev_Callback(hObject, eventdata, handles) % previous pattern
-    
-    case 'd'
-        patternSelect_next_Callback(hObject, eventdata, handles); %next pattern
-    
     case 'k' %keyboard shortcut to save current node pattern into the next available space
         pushbutton40_Callback(hObject, eventdata, handles);
         
