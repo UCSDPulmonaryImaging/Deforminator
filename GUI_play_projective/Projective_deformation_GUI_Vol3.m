@@ -725,6 +725,41 @@ switch eventdata.Key
         handles.node_pattern = 10;
         loadSelectedPattern(hObject,eventdata,handles);
         
+    case 'q'
+        handles.node_pattern = 11;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case 'w'
+        handles.node_pattern = 12;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case 'e'
+        handles.node_pattern = 13;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case 'r'
+        handles.node_pattern = 14;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case 't'
+        handles.node_pattern = 15;
+        loadSelectedPattern(hObject,eventdata,handles);
+        
+    case 's'
+        pushbutton1_set_Callback(hObject, eventdata, handles); %save to file
+        
+    case 'z'
+        pushbutton41_Callback(hObject, eventdata, handles); % last pattern
+    
+    case 'x'
+        pushbutton2_set_Callback(hObject, eventdata, handles); %initial pattern
+    
+    case 'a'
+        patternSelect_prev_Callback(hObject, eventdata, handles) % previous pattern
+    
+    case 'd'
+        patternSelect_next_Callback(hObject, eventdata, handles); %next pattern
+    
     case 'k' %keyboard shortcut to save current node pattern into the next available space
         pushbutton40_Callback(hObject, eventdata, handles);
         
@@ -1462,7 +1497,7 @@ function pushbutton1_set_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 %%%%% Figure
-set(hObject,'Enable','off');
+set(handles.pushbutton1_set,'Enable','off');
 
 Ig8 = handles.nodal_parameters;
 breathhold = handles.badbreathhold;

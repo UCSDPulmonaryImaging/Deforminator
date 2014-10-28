@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3050596928" file="/Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL.prj" location="/Users/aasadi/Documents/Repository Folder/AKA_Deforminator" name="Deforminator_PIL" preferred-package-location="/Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution" preferred-package-type="package.type.app" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
+  <configuration build-checksum="1102250847" file="/Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL.prj" location="/Users/aasadi/Documents/Repository Folder/AKA_Deforminator" name="Deforminator_PIL" preferred-package-location="/Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution" preferred-package-type="package.type.app" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
     <param.appname>Deforminator_PIL</param.appname>
     <param.icon />
     <param.icons />

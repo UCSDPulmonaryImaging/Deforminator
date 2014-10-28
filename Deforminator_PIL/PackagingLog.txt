@@ -12,11 +12,11 @@ Folder/AKA_Deforminator" to Compiler path instance.]
 Parsing file "/Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL.m"
 	(Referenced from: "Compiler Command Line").
 Deleting 5 temporary MEX authorization files.
-Removing: '/tmp/015e7V0sDCk_5607.auth'.
-Removing: '/tmp/015e7gCtyh8_5607.auth'.
-Removing: '/tmp/015e75XIy0I_5607.auth'.
-Removing: '/tmp/015e74DVTtd_5607.auth'.
-Removing: '/tmp/015e7NJixMG_5607.auth'.
+Removing: '/tmp/018542savuU_6228.auth'.
+Removing: '/tmp/01854KzQvDU_6228.auth'.
+Removing: '/tmp/0185478Trwu_6228.auth'.
+Removing: '/tmp/01854ofLQEn_6228.auth'.
+Removing: '/tmp/01854OMewhP_6228.auth'.
 Generating file "/Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_testing/readme.txt".
 Generating file "/Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_testing/run_Deforminator_PIL.sh".
 Packaging...
@@ -24,7 +24,7 @@ Adding custom icon /Applications/MATLAB_R2014b.app/toolbox/compiler/Resources/de
 Creating the bundle...
 Copying /Applications/MATLAB_R2014b.app/toolbox/compiler/maci64/setup.app to /Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution/MyAppInstaller_web.app.
 Copying /Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution/bundle.zip to /Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution/MyAppInstaller_web.app/Contents/Resources/bundle.zip.
-Copying /var/folders/jb/p562lspn7nl1ysgdprzjvnd80000gn/T/splash186376297057100606.tmp to /Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution/MyAppInstaller_web.app/Contents/Resources/splash.png.
+Copying /var/folders/jb/p562lspn7nl1ysgdprzjvnd80000gn/T/splash6290736132762409176.tmp to /Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution/MyAppInstaller_web.app/Contents/Resources/splash.png.
 Copying /Applications/MATLAB_R2014b.app/toolbox/compiler/Resources/default_icon.icns to /Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution/MyAppInstaller_web.app/Contents/Resources/installer.icns.
 Web based installer created at /Users/aasadi/Documents/Repository Folder/AKA_Deforminator/Deforminator_PIL/for_redistribution/MyAppInstaller_web.app.
 Packaging complete.
