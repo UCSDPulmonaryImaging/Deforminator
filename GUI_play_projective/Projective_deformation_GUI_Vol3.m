@@ -1482,8 +1482,11 @@ prompt={'Subject initials:','Notes:'};
 name='Input subject info';
 defaultanswer={subject_initials,notes};
 answer=inputdlg(prompt,name,2,defaultanswer);
-subject_initials=char(answer(1));
-notes=char(answer(2));
+
+if ~isempty(answer)
+    subject_initials=char(answer(1));
+    notes=char(answer(2));
+end
 
 x_roi = handles.x_roi_undef;
 y_roi = handles.y_roi_undef;
@@ -1504,8 +1507,8 @@ end
         
 for i1 = 1:handles.im_number_end
     percentComplete = i1/handles.im_number_end*100;
-    if ceil(percentComplete) == 100
-        percentComplete == 99;
+    if percentComplete >= 99;
+        percentComplete = 99;
     end
     pbar(ceil(percentComplete)) = 1;
     
