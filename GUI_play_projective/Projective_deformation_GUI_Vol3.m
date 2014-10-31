@@ -1593,7 +1593,7 @@ cd(homedir);
 
 set(handles.completionStatus,'String','Save Complete');
 
-set(hObject,'Enable','on');
+set(handles.pushbutton1_set,'Enable','on');
 guidata(hObject, handles);
 end
 
