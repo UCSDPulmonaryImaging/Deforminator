@@ -1,16 +1,17 @@
 %% Help Section
 % to be completed
-
-
+%
+%
 % Function calls
 % First load: Projective_deformation_GUI_Vol3(([],[],IM_unreg,[],saveFilename))
 % Reload Prev: Projective_deformation_GUI_Vol3(x_roi,y_roi,IM_unreg,Ig8,saveFilename,breathhold,imageq);
-
+% Multimodality: Projective_deformation_GUI_Vol3(x_roi_oldModality,y_roi_oldModality,OtherModalityIM,[],saveFilename,[],[]);
+%
 %Varargin list for .m-file debugging (empty means use [] as placeholder,
 %excluded inputs should not appear at all in the function call
 % note that nargin includes the three default hObject, eventdata, handles
 % in addition to the varargin argument
-
+%
 % 1: x_roi, optionally empty, x coordinates of ROI vertices
 % 2: y_roi, optionally empty, y coordinates of ROI vertices
 % 3: IM_defs, mandatory input, set of images to register
