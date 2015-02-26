@@ -1,4 +1,4 @@
-function Deforminator_PIL_MultiModality(saveFilename)
+function Deforminator_PIL_MultiModality(X,loadFilename)
 
 % Wrapper around Tatsuya Arai's 
 %   Projective deformation code
@@ -39,39 +39,40 @@ function Deforminator_PIL_MultiModality(saveFilename)
 % 
 
 close all
+% 
+% if nargin == 0 
+%     % -1 - Select UI File Name -> Saving
+%     'Select save file name'
+%     [saveFilename,path2save]=uiputfile('*.mat', 'Select save file name');
+%     % 0 - Load all Files
+%     home = cd;
+%     % If no subject directory included, select it now
+% 
+%         % Select folder where data is stored
+%     dire0=pwd;
+%     'Select folder containing data to be registered'
+%     dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
+%     loadedpath = dire2;
+% 
+%     %Load all dicom images in 
+%     [IM_unreg]=LoadAllDicomFiles(dire2);
+%     cd(home);
+%     Projective_deformation_GUI_Vol3(x_roi,[],IM_unreg,[],saveFilename,path2save,loadedpath);
+% 
+% end
 
-if nargin == 0 
-    % -1 - Select UI File Name -> Saving
-    'Select save file name'
-    [saveFilename,path2save]=uiputfile('*.mat', 'Select save file name');
-    % 0 - Load all Files
-    home = cd;
-    % If no subject directory included, select it now
-
-        % Select folder where data is stored
-    dire0=pwd;
-    'Select folder containing data to be registered'
-    dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
-    loadedpath = dire2;
-
-    %Load all dicom images in 
-    [IM_unreg]=LoadAllDicomFiles(dire2);
-    cd(home);
-    Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename,path2save,loadedpath);
-
-end
-
-if nargin ==1
+if nargin ==2
     
-    load(saveFilename)
+    load(loadFilename)
     
+
     
      'Select save file name'
     [saveFilename_OtherModality,path2save]=uiputfile('*.mat', 'Select save file name');
     % 0 - Load all Files
     home = cd;
     
-    nodepatterns = repmat(reference_pattern,[15,1]);
+  %  nodepatterns = repmat(reference_pattern,[15,1]);
     
     %some stuff for backwards compatibility with previous versions (did not
     %have as many saved outputs)
@@ -95,6 +96,7 @@ if nargin ==1
         nodepatterns = repmat(reference_pattern,[15,1]);
     %end
     
+    
     if ~exist('subject_initials')
         subject_initials = '';
     end
@@ -103,13 +105,20 @@ if nargin ==1
         notes = '';
     end
  
-    dire0=pwd;
-    'Select folder containing data to be registered'
-    dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
-    loadedpath = dire2;
-    [Modality2Images]=LoadAllDicomFiles(dire2);
+    Modality2Images=X;
+    breathholdl=zeros(1,size(Modality2Images,3));
+    imageql=zeros(1,size(Modality2Images,3));
+    loadedpath=''
+%     dire0=pwd;
+%     'Select folder containing data to be registered'
+%     dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
+%     loadedpath = dire2;
+%     [Modality2Images]=LoadAllDicomFiles(dire2);
     cd(home);
     
-    Projective_deformation_GUI_Vol3(x_roi,y_roi,Modality2Images,[],saveFilename_OtherModality,path2save,loadedpath,breathhold,imageq,nodepatterns,reference_pattern,subject_initials,notes);
-
+    
+    
+    Projective_deformation_GUI_Vol3(x_roi,y_roi,Modality2Images,[],saveFilename_OtherModality,path2save,loadedpath,breathholdl,imageql,nodepatterns,reference_pattern,subject_initials,notes);
+    
+    
 end
