@@ -536,7 +536,11 @@ function initialize(hObject, eventdata, handles)
         
     
     if isempty(handles.save_nodal_parameters)
-        handles.save_nodal_parameters = handles.nodal_parameters(1:15,:);
+         if size(handles.nodal_parameters,1) < 15
+            handles.save_nodal_parameters = handles.nodal_parameters;
+         else
+            handles.save_nodal_parameters = handles.nodal_parameters(1:15,:);
+        end
     end
     
     handles.initial_nodal_parameters = handles.nodal_parameters;
