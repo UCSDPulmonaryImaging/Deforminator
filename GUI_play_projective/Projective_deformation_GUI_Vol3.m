@@ -1659,7 +1659,7 @@ end
 %display the new image
 hold off;
 axes(handles.axes1);
-handles.im_fig = imagesc(handles.IM_defs(:,:,handles.im_number)); colormap hot; caxis([0, max(max(max(handles.IM_defs))).*0.3]);
+handles.im_fig = imagesc(handles.IM_defs(:,:,handles.im_number)); colormap hot; caxis([0, max(max(max(handles.IM_defs))).*0.7]);
 axis ij; axis([-10 , 266, -10 , 266]); handles.ah = axis; 
 
 %additional display options based on radio-button/image-quality values
