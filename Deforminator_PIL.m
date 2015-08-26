@@ -52,7 +52,7 @@ if nargin == 0
     dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
     loadedpath = dire2;
 
-    %Load all dicom images in 
+    %Load all dicom images in dire2
     [IM_unreg]=LoadAllDicomFiles(dire2);
     cd(home);
     Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename,path2save,loadedpath);
