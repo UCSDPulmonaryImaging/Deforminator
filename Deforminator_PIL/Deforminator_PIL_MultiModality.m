@@ -1,4 +1,4 @@
-function Deforminator_PIL_MultiModality(X,loadFilename)
+function Deforminator_PIL_MultiModality(Modality2Images,ROI);
 
 % Wrapper around Tatsuya Arai's 
 %   Projective deformation code
@@ -61,10 +61,9 @@ close all
 % 
 % end
 
-if nargin ==2
-    
-    load(loadFilename)
-    
+if nargin ==3
+    load(loadFilename)    
+
 
     
      'Select save file name'
@@ -84,7 +83,7 @@ if nargin ==2
         loadedpath = 'Not Available';
     end
     
-    if ~exist('reference_pattern')
+    if ~exist('ROI')
         min_x = min(x_roi); 
         max_x = max(x_roi);
         min_y = min(y_roi);
@@ -92,9 +91,9 @@ if nargin ==2
         reference_pattern = [min_x, max_x, min_x, max_x, min_y, min_y, max_y, max_y];
     end
     
-    %if ~exist('nodepatterns')
+    if ~exist('nodepatterns')
         nodepatterns = repmat(reference_pattern,[15,1]);
-    %end
+    end
     
     
     if ~exist('subject_initials')
@@ -104,8 +103,7 @@ if nargin ==2
     if ~exist('notes')
         notes = '';
     end
- 
-    Modality2Images=X;
+
     breathholdl=zeros(1,size(Modality2Images,3));
     imageql=zeros(1,size(Modality2Images,3));
     loadedpath=''
