@@ -1,4 +1,4 @@
-function Deforminator_PIL(saveFilename)
+function Deforminator_PIL_multiSlice(slicenumber,totalslices,saveFilename)
 
 % Wrapper around Tatsuya Arai's 
 %   Projective deformation code
@@ -38,7 +38,7 @@ function Deforminator_PIL(saveFilename)
 
 close all
 
-if nargin == 0 
+if nargin == 2 
     % -1 - Select UI File Name -> Saving
     'Select save file name'
     [saveFilename,path2save]=uiputfile('*.mat', 'Select save file name');
@@ -52,14 +52,15 @@ if nargin == 0
     dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
     loadedpath = dire2;
 
-    %Load all dicom images in dire2
+    %Load all dicom images in 
     [IM_unreg]=LoadAllDicomFiles(dire2);
+    IM_unreg = IM_unreg(:,:,slicenumber:totalslices:end);
     cd(home);
     Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename,path2save,loadedpath);
 
 end
 
-if nargin ==1
+if nargin ==3
     
     load(saveFilename)
     
