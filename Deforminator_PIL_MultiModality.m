@@ -1,4 +1,4 @@
-function Deforminator_PIL_MultiModality(Modality2Images,ROI);
+function Deforminator_PIL_MultiModality(Modality2Images,loadFilename);
 
 % Wrapper around Tatsuya Arai's 
 %   Projective deformation code
@@ -6,10 +6,15 @@ function Deforminator_PIL_MultiModality(Modality2Images,ROI);
 % WORK IN PROGRESS
 % ===================
 % USAGE
-%   Deforminator_PIL
+%   Deforminator_PIL_MultiModality
 % 
+%  Usage example: 
+%    Register density images (#1) to ASL-SVI images (#2)
+%
 % Optional inputs
-%   savedFilename 'This is an appropriate filename.mat';
+%   Modality2Images - > 2nd modality images, to be registered to #1
+%   loadFilename -> 'This is an appropriate filename.mat';
+%      file containing the registered modality #2
 % 
 % Outputs
 %   none to the working environment
@@ -29,9 +34,10 @@ function Deforminator_PIL_MultiModality(Modality2Images,ROI);
 %   dire2 - directory of loaded data
 %   Ig8 - Projective transformation
 %
-% Rui Carlos Sá. Projective transformation and GUI's by Tatsuya Arai
-% March 2014
-% v1.1
+% Rui Carlos Sá. Projective transformation and GUI's by Tatsuya Arai &
+% Amran Asadi
+% November 2015
+% v2.0
 %
 % Changes from v1.0
 % Adds possibility to start from an ongoing file 
@@ -39,37 +45,44 @@ function Deforminator_PIL_MultiModality(Modality2Images,ROI);
 % 
 
 close all
-% 
-% if nargin == 0 
-%     % -1 - Select UI File Name -> Saving
-%     'Select save file name'
-%     [saveFilename,path2save]=uiputfile('*.mat', 'Select save file name');
-%     % 0 - Load all Files
-%     home = cd;
-%     % If no subject directory included, select it now
-% 
-%         % Select folder where data is stored
-%     dire0=pwd;
-%     'Select folder containing data to be registered'
-%     dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
-%     loadedpath = dire2;
-% 
-%     %Load all dicom images in 
-%     [IM_unreg]=LoadAllDicomFiles(dire2);
-%     cd(home);
-%     Projective_deformation_GUI_Vol3(x_roi,[],IM_unreg,[],saveFilename,path2save,loadedpath);
-% 
-% end
+ 
+ % if nargin == 0 
+      % -1 - Select UI File Name -> Saving
+%       'Select save file name'
+%       [saveFilename,path2save]=uiputfile('*.mat', 'Select save file name');
+%       % 0 - Load all Files
+       home = cd;
+      % If no subject directory included, select it now
+  
+      % Select folder where data is stored
+ if nargin == 0 
+      dire0=pwd;
+      'Select folder containing data to be registered'
+      dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
+      loadedpath = dire2;  
+      %Load all dicom images in 
+      [Modality2Images]=LoadAllDicomFiles(dire2);
+      cd(home);
+%      Projective_deformation_GUI_Vol3(x_roi,[],IM_unreg,[],saveFilename,path2save,loadedpath);    
+ end
+ 
+ if nargin ==1
+      [loadFilename,path2load]=uigetfile('*.mat', 'Select save file name');
+ end
+ 
+    
+%if nargin ~=1
+%   [loadFilename,path2load]=uigetfile('*.mat', 'Select save file name');
 
-if nargin ==3
-    load(loadFilename)    
-
-
+    cd(path2load)
+    load(loadFilename,'*ROI*','x*','y*','reference*','node*');  
+    
+    ROI=double(referenceROI);
     
      'Select save file name'
     [saveFilename_OtherModality,path2save]=uiputfile('*.mat', 'Select save file name');
     % 0 - Load all Files
-    home = cd;
+    %home = cd;
     
   %  nodepatterns = repmat(reference_pattern,[15,1]);
     
@@ -83,13 +96,15 @@ if nargin ==3
         loadedpath = 'Not Available';
     end
     
-    if ~exist('ROI')
+    if exist('ROI')
         min_x = min(x_roi); 
         max_x = max(x_roi);
         min_y = min(y_roi);
         max_y = max(y_roi);
         reference_pattern = [min_x, max_x, min_x, max_x, min_y, min_y, max_y, max_y];
     end
+    
+    keyboard 
     
     if ~exist('nodepatterns')
         nodepatterns = repmat(reference_pattern,[15,1]);
@@ -119,4 +134,4 @@ if nargin ==3
     Projective_deformation_GUI_Vol3(x_roi,y_roi,Modality2Images,[],saveFilename_OtherModality,path2save,loadedpath,breathholdl,imageql,nodepatterns,reference_pattern,subject_initials,notes);
     
     
-end
+%end
