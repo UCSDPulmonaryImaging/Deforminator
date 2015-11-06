@@ -55,7 +55,7 @@ close all
       % If no subject directory included, select it now
   
       % Select folder where data is stored
- if nargin == 0 
+ if nargin < 1 
       dire0=pwd;
       'Select folder containing data to be registered'
       dire2=uigetdir(dire0,'Select folder containing DICOM data to be registered');
@@ -64,10 +64,11 @@ close all
       [Modality2Images]=LoadAllDicomFiles(dire2);
       cd(home);
 %      Projective_deformation_GUI_Vol3(x_roi,[],IM_unreg,[],saveFilename,path2save,loadedpath);    
+     
  end
  
- if nargin ==1
-      [loadFilename,path2load]=uigetfile('*.mat', 'Select save file name');
+ if nargin<2
+      [loadFilename,path2load]=uigetfile('*.mat', 'Select Reference registration name');
  end
  
     
@@ -104,7 +105,6 @@ close all
         reference_pattern = [min_x, max_x, min_x, max_x, min_y, min_y, max_y, max_y];
     end
     
-    keyboard 
     
     if ~exist('nodepatterns')
         nodepatterns = repmat(reference_pattern,[15,1]);
