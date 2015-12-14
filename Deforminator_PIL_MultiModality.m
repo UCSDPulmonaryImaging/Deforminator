@@ -77,7 +77,7 @@ close all
 
     cd(path2load)
     load(loadFilename,'*ROI*','x*','y*','reference*','node*');  
-    
+    clear node*
     ROI=double(referenceROI);
     
      'Select save file name'
