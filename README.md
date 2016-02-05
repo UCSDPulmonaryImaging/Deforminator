@@ -12,6 +12,9 @@ The original algorithm and interface was developed by Tatsuya Arai in early 2014
 
 Using Deforminator_PIL
 
+Add Deforminator/ to your matlab path
+Also add the GUI_Play_Projective/ folde to path
+
 Keyboard Shortcuts
 
 numbers 1-0: loads saved patterns 1-10
