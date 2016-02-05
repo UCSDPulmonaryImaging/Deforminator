@@ -33,12 +33,11 @@ Work performed for the University of California, San Diego, Pulmonary Imaging La
 
 
 
-# Function "different.m"
+* Function "different.m"
 Copyright (c) 2010, Jonas Lundgren, All rights reserved.
 
 Written by Jonas Lundgren <splinefit@gmail.com>
 https://www.mathworks.com/matlabcentral/profile/authors/920395-jonas-lundgren
-
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -61,4 +60,3 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
-
