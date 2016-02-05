@@ -12,9 +12,9 @@ The original algorithm and interface was developed by Tatsuya Arai in early 2014
 
 Using Deforminator_PIL
 
-For use in Matlab environment: 
-Add to the matlab path the following folders:
-Deforminator/ & GUI_play_projective/ 
+Add to Matlab path the following folders:
+- Deforminator/ 
+- GUI_play_projective/ 
 
 Keyboard Shortcuts
 
