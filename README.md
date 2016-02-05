@@ -30,6 +30,7 @@ backspace: replace the pattern number currently selected with a different patter
 Writen by: 
 Tatsuya J. Arai, Amran K. Asadi, Rui C. Sá 
 Copyright (c) 2012-2016, All rights reserved
+
 Work performed for the University of California, San Diego, Pulmonary Imaging Laboratory
 
 Except function
