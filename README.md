@@ -12,8 +12,9 @@ The original algorithm and interface was developed by Tatsuya Arai in early 2014
 
 Using Deforminator_PIL
 
-Add Deforminator/ to your matlab path
-Also add the GUI_Play_Projective/ folde to path
+For use in Matlab environment: 
+Add to the matlab path the following folders:
+Deforminator/ & GUI_play_projective/ 
 
 Keyboard Shortcuts
 
@@ -30,7 +31,6 @@ Writen by:
 Tatsuya J. Arai, Amran K. Asadi, Rui C. Sá 
 Copyright (c) 2012-2016, All rights reserved
 Work performed for the University of California, San Diego, Pulmonary Imaging Laboratory
-
 
 Except function
 - "different.m", Copyright (c) 2010, Jonas Lundgren, All rights reserved. 
