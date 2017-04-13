@@ -1,4 +1,4 @@
-function [Xsorted,FNa,X,IND]=LoadAllDicomFilesv6(path2dir,IDF,imnumb);
+function [Xsorted,FNa,X,IND]=LoadAllDicomFiles(path2dir,IDF,imnumb);
 
 % [Xsorted,FNa,X,IND]=LoadAllDicomFiles(path2dir,Identifier);
 %
@@ -20,7 +20,8 @@ function [Xsorted,FNa,X,IND]=LoadAllDicomFilesv6(path2dir,IDF,imnumb);
 %
 % Rui Carlos Sá - Tatsuya Arai
 % April 2017 V6.0
-%
+
+
 %----------------------------------------------------
 % Changes from v1.0 to v2.0
 %  Sorts files when scanner output is not in the right order.
