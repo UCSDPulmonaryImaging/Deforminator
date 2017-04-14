@@ -53,7 +53,7 @@ function [Xsorted,FNa,X,IND]=LoadAllDicomFiles(path2dir,IDF,imnumb);
 cd(path2dir)
 
 if nargin == 1
-    IDF='*.MRDC*';
+    IDF='MRDC.';
 end
 
 
@@ -92,6 +92,7 @@ FNa2=char(FNa);
 
 Xsorted=zeros(size(X));
 aux1=strfind(FNa2(1,:),IDF);
+keyboard
 ba=aux1+length(IDF);
 
 for i=1:Nm
