@@ -92,7 +92,6 @@ FNa2=char(FNa);
 
 Xsorted=zeros(size(X));
 aux1=strfind(FNa2(1,:),IDF);
-keyboard
 ba=aux1+length(IDF);
 
 for i=1:Nm
