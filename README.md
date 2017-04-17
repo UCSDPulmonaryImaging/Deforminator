@@ -11,22 +11,27 @@ Deforminator_PIL is a matlab graphical user interface for deformable linear regi
 The original algorithm and interface was developed by Tatsuya Arai in early 2014, and has undergone a few revisions since its first incarnation. Rui Carlos Sá added a "wrapper", shared it using github and added a few add-ons in March 2014; Amran Asadi significantly improved usability of the GUI and produced a compiled version that only requires the free Matlab runtime environment (not full Matlab).
 
 
-Installing Deforminator_PIL
+## Installing Deforminator_PIL
 
-With an installed version of MATLAB (preferably >=2014a)
+### With an installed version of MATLAB (preferably >=2014a)
 
+Download the latests version from Github
 Add to Matlab path the following folders:
 - Deforminator/ 
 - GUI_play_projective/ 
 
-Without MATLAB/ using runtime environment
-- Follow instructions in folder: 
-  Deforminator_PIL/for_testing/
+### Without MATLAB/ using runtime environment
+
+Follow instructions in folder: Deforminator_PIL/for_testing/
 
 
-Using Deforminator_PIL
+Installing Deforminator_PIL
 
-Keyboard Shortcuts
+With an installed version of MATLAB (preferably >=2014a)
+
+## Using Deforminator_PIL
+
+### Keyboard Shortcuts
 
 numbers 1-0: loads saved patterns 1-10
 q, w, e, r, t: loads saved patterns 11-15
