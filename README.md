@@ -16,18 +16,16 @@ The original algorithm and interface was developed by Tatsuya Arai in early 2014
 ### With an installed version of MATLAB (preferably >=2014a)
 
 Download the latests version from Github
+
 Add to Matlab path the following folders:
 - Deforminator/ 
 - GUI_play_projective/ 
 
 ### Without MATLAB/ using runtime environment
 
-Follow instructions in folder: Deforminator_PIL/for_testing/
+Follow instructions in folder: 
+Deforminator_PIL/for_testing/
 
-
-Installing Deforminator_PIL
-
-With an installed version of MATLAB (preferably >=2014a)
 
 ## Using Deforminator_PIL
 
