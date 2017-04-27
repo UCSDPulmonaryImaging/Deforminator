@@ -40,6 +40,25 @@ k: save the current pattern to the next unused pattern spot
 backspace: replace the pattern number currently selected with a different pattern. For example, if you load up pattern 7, and then modify it and would like to save the new pattern 7, drag the anchor points to the desired location and hit backspace. Your modified pattern is now saved as pattern 7. Note that this does not effect images to which the original pattern 7 had been applied (that pattern is just not a hotkeyed favorite anymore)
 
 
+### Main outputs
+Size 256 x 256 x 'number of images'
+
+* IM_def_corr – deformed images
+* IM_unref – original unregistered images
+* Area_Change_def – Area change induced by deformation.  
+The sum of the area change inside the reference ROI is an estimate of the change in volume introduced by registration.
+Volume changes >10% (<.9 or >1.1) are outside the range of validity of the method and **must be discarded**.
+
+Images 256x256
+* referenceROI – Reference ROI 
+* refIM - Reference Image
+
+Vectors ('number of images' x 1):
+* Breathhold – vector signaling images to be excluded due to bad breatholds    
+* Imageq – vector indicating ‘bad’ images (acquisition problem, you can typically ignore this one in SVI)
+ 
+
+
 Writen by: 
 Tatsuya J. Arai, Amran K. Asadi, Rui C. Sá 
 Copyright (c) 2012-2016, All rights reserved
