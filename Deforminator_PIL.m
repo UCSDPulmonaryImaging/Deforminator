@@ -53,7 +53,9 @@ if nargin == 0
     loadedpath = dire2;
 
     %Load all dicom images in dire2
-    [IM_unreg]=LoadAllDicomFiles(dire2);
+    %[IM_unreg]=LoadAllDicomFiles(dire2,'MRDC.');
+    %[IM_unreg]=LoadAllDicomFiles(dire2,'MRDC.');
+    [IM_unreg]=LoadAllDicomFiles(dire2,'IM_');
     cd(home);
     Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename,path2save,loadedpath);
 
