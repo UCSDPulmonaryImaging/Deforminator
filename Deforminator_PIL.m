@@ -35,7 +35,12 @@ function Deforminator_PIL(saveFilename)
 % Adds possibility to start from an ongoing file 
 % Changed function name
 % 
-
+% 
+% Nov 2022 - KP
+% Added option to transpose images acquired with increased dynamic
+% range
+% 
+% 
 close all
 
 if nargin == 0 
@@ -53,10 +58,28 @@ if nargin == 0
     loadedpath = dire2;
 
     %Load all dicom images in dire2
-    %[IM_unreg]=LoadAllDicomFiles(dire2,'MRDC.');
-    [IM_unreg]=LoadAllDicomFiles(dire2,'MRDC.');
-    %[IM_unreg]=LoadAllDicomFiles(dire2,'IM_');
+    [IM_unreg]=LoadAllDicomFilesv51(dire2);
+    maxp = max(max(IM_unreg(:,:,1)));
+    maxd = max(max(IM_unreg(:,:,end)));
+    IM_unreg(:,:,end) = IM_unreg(:,:,end).*maxp./maxd;
+%     load([dire2 '/Data.mat']);
     cd(home);
+
+    % Display image to verify orientation
+    f1 = figure;
+    imshow(IM_unreg(:,:,1),[],'initialmagnification','fit','Colormap',colormap('jet'));
+    rotcheck = questdlg('Do images require transpose?','Orientation Check','yes','no','no');
+    close(f1);
+    switch rotcheck
+        case 'yes'
+            disp('Images will be rotated for deformination. Verify output orientations before analysis');
+            IM_unreg = permute(IM_unreg,[2 1 3]);
+        case 'no'
+            disp('Images will NOT be rotated for deformination. Verify output orientations before analysis');
+    end
+
+
+
     Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename,path2save,loadedpath);
 
 end
