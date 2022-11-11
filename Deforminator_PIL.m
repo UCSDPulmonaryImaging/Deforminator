@@ -27,13 +27,17 @@ function Deforminator_PIL(saveFilename)
 %   dire2 - directory of loaded data
 %   Ig8 - Projective transformation
 %
-% Rui Carlos Sá. Projective transformation and GUI's by Tatsuya Arai
+% Rui Carlos SÃ¡. Projective transformation and GUI's by Tatsuya Arai
 % March 2014
 % v1.1
 %
 % Changes from v1.0
 % Adds possibility to start from an ongoing file 
 % Changed function name
+% 
+% Nov 2022 - KP
+% Added option to transpose images acquired with increased dynamic
+% range
 % 
 
 close all
@@ -57,6 +61,21 @@ if nargin == 0
     [IM_unreg]=LoadAllDicomFiles(dire2,'MRDC.');
     %[IM_unreg]=LoadAllDicomFiles(dire2,'IM_');
     cd(home);
+    
+    % Display image to verify orientation
+    f1 = figure;
+    imshow(IM_unreg(:,:,1),[],'initialmagnification','fit','Colormap',colormap('jet'));
+    rotcheck = questdlg('Do images require transpose?','Orientation Check','yes','no','no');
+    close(f1);
+    switch rotcheck
+        case 'yes'
+            disp('Images will be rotated for deformination. Verify output orientations before analysis');
+            IM_unreg = permute(IM_unreg,[2 1 3]);
+        case 'no'
+            disp('Images will NOT be rotated for deformination. Verify output orientations before analysis');
+    end
+
+
     Projective_deformation_GUI_Vol3([],[],IM_unreg,[],saveFilename,path2save,loadedpath);
 
 end
